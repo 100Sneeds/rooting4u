@@ -41,3 +41,12 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: HitZones
+    uniqueID: 4167037515
+    locked: 0
+  - name: Arrows
+    uniqueID: 2539985885
+    locked: 0
+  - name: BoardTop
+    uniqueID: 3038442349
+    locked: 0
