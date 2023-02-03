@@ -24,7 +24,7 @@ public class MatchStateController : MonoBehaviour
 
     public SetupPhase setupPhase;
 
-    private startingPlayerSlot PlayerSlot;
+    private PlayerSlot startingPlayerSlot;
 
     // Start is called before the first frame update
     void Start()
