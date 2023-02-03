@@ -20,12 +20,12 @@ public class SetupPhase : MonoBehaviour
         
     }
 
-    MatchStateController.PlayerSlot GetStartingPlayerSlot()
+    public MatchStateController.PlayerSlot GetStartingPlayerSlot()
     {
         return this.startingPlayerSlot;
     }
 
-    void Setup()
+    public void Setup()
     {
         this.startingPlayerSlot = DecideStartingPlayer();
 
