@@ -40,15 +40,17 @@ public class PersistentPlayer : MonoBehaviour
         return new PersistentCard[]
         {
             new PersistentCard(1, CardColor.Red, 1, CardColor.Red, 1),
-            new PersistentCard(1, CardColor.Red, 1, CardColor.Red, 1),
-            new PersistentCard(1, CardColor.Red, 1, CardColor.Red, 1),
-            new PersistentCard(1, CardColor.Red, 1, CardColor.Red, 1),
-            new PersistentCard(1, CardColor.Red, 1, CardColor.Red, 1),
+            new PersistentCard(1, CardColor.Red, 1, CardColor.Green, 1),
+            new PersistentCard(1, CardColor.Red, 1, CardColor.Blue, 1),
 
-            new PersistentCard(1, CardColor.Red, 1, CardColor.Red, 1),
-            new PersistentCard(1, CardColor.Red, 1, CardColor.Red, 1),
-            new PersistentCard(1, CardColor.Red, 1, CardColor.Red, 1),
-            new PersistentCard(1, CardColor.Red, 1, CardColor.Red, 1),
+            new PersistentCard(1, CardColor.Blue, 1, CardColor.Red, 1),
+            new PersistentCard(1, CardColor.Blue, 1, CardColor.Green, 1),
+            new PersistentCard(1, CardColor.Blue, 1, CardColor.Blue, 1),
+
+            new PersistentCard(1, CardColor.Green, 1, CardColor.Red, 1),
+            new PersistentCard(1, CardColor.Green, 1, CardColor.Green, 1),
+            new PersistentCard(1, CardColor.Green, 1, CardColor.Blue, 1),
+
             new PersistentCard(1, CardColor.Red, 1, CardColor.Red, 1),
         };
     }
