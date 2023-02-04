@@ -26,23 +26,63 @@ public class HitZone : MonoBehaviour
     private Vector3 initialScale;
     private Vector3 pressedScale;
 
+    // AI player related Stuff
+    public bool isAI;
+    public PlayerAI playerAI;
+
     private Queue<GameObject> arrowQueue = new Queue<GameObject>();
     private GameObject currentArrow;
+    private GameObject lastArrow;
 
     // Start is called before the first frame update
     void Start()
     {
+        
         initialScale = this.transform.localScale;
         pressedScale = new Vector3(
             initialScale.x * HitZone.PRESSED_SPRITE_SCALING_FACTOR,
             initialScale.y * HitZone.PRESSED_SPRITE_SCALING_FACTOR,
             initialScale.z * HitZone.PRESSED_SPRITE_SCALING_FACTOR
         );
+        this.isAI = true;
+        playerAI = new PlayerAI(difficulty: 0);
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (isAI) {
+            AIUpdate();
+        } else {
+            PlayerUpdate();
+        }
+    }
+    void AIUpdate() {
+        // handle when note goes beyond the hit zone
+        if (this.currentArrow != null && this.IsArrowPastHitZone(this.currentArrow)) {
+            this.ProcessArrowMiss(this.currentArrow);
+        }
+
+        if (this.currentArrow != null) {
+
+            float noteY = currentArrow.transform.position.y;
+            float hitZoneY = this.transform.position.y;
+            float noteDistance = hitZoneY - noteY;
+            Debug.Log("NoteDistance: "+noteDistance+" NextHitTiming: "+this.playerAI.nextHitTiming);
+            if(noteDistance <= this.playerAI.nextHitTiming){
+                // get arrow success level
+                Debug.Log("I'M HITTING THE ARROW NOW FATHER PLEASE I CRAVE CHEDDAR");
+
+                this.ProcessArrowActivation(this.currentArrow);
+
+
+                // generate next note hit timing
+                //this.playerAI.generateNextHitTiming(combo: 10);
+            }
+        }  
+    }
+
+    void PlayerUpdate(){
         if (this.currentArrow != null && this.IsArrowPastHitZone(this.currentArrow))
         {
             this.ProcessArrowMiss(this.currentArrow);
