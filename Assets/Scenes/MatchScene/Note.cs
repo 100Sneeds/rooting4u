@@ -45,4 +45,9 @@ public struct Note
         }
         return arrowDirections;
     }
+
+    public Note GetCopy()
+    {
+        return new Note(this.duration, this.isLeftNote, this.isDownNote, this.isUpNote, this.isRightNote);
+    }
 }

@@ -32,8 +32,11 @@ public class ArrowSpawner : MonoBehaviour
     private float timerSeconds = 0f;
     private float delayToNextNoteSeconds = 0f;
 
+    private NoteSequence currentSequence;
     private Queue<Note> currentSequenceNotes;
-    public Queue<NoteSequence> noteSequenceQueue;
+
+    private Queue<NoteSequence> incompleteSequences = new Queue<NoteSequence>();
+    private Queue<NoteSequence> sequenceSpawnQueue;
 
     // Start is called before the first frame update
     void Start()
@@ -54,7 +57,6 @@ public class ArrowSpawner : MonoBehaviour
             this.timerSeconds -= this.delayToNextNoteSeconds;
             if (this.currentSequenceNotes == null || this.currentSequenceNotes.Count == 0)
             {
-                // this.delayToNextNoteSeconds = ArrowSpawner.SHORTEST_NOTE_DURATION;
                 // TODO allow some mechanism for external objects to add sequences to the queue
                 this.SetCurrentNoteSequence(NoteSequenceGenerator.GetRandomEasyNoteSequence());
                 this.delayToNextNoteSeconds = 0f;
@@ -66,6 +68,11 @@ public class ArrowSpawner : MonoBehaviour
                 this.SpawnArrowDirections(arrowDirections);
                 this.delayToNextNoteSeconds = ArrowSpawner.GetNoteDurationInSeconds(nextNote.GetDuration());
             }
+        }
+
+        if (this.incompleteSequences.Count != 0)
+        {
+            this.UpdateAndResolveIncompleteSequences(this.incompleteSequences);
         }
     }
 
@@ -89,9 +96,40 @@ public class ArrowSpawner : MonoBehaviour
         }
     }
 
+    private void UpdateAndResolveIncompleteSequences(Queue<NoteSequence> incompleteSequences)
+    {
+        if (incompleteSequences.Count == 0)
+        {
+            return;
+        } else
+        {
+            NoteSequence nextSequence = incompleteSequences.Peek();
+            NoteSequence.SpawnState spawnState = nextSequence.GetSpawnState();
+            
+            if (spawnState == NoteSequence.SpawnState.PastHitZone)
+            {
+                if (nextSequence.GetSuccessState() == NoteSequence.SuccessState.FullCombo)
+                {
+                    Debug.Log("Full Combo!");
+                }
+                if (nextSequence.GetSuccessState() == NoteSequence.SuccessState.Success)
+                {
+                    Debug.Log("Success");
+                }
+                if (nextSequence.GetSuccessState() == NoteSequence.SuccessState.Fail)
+                {
+                    Debug.Log("Fail");
+                }
+                incompleteSequences.Dequeue();
+            }
+        }
+    }
+
     private void SetCurrentNoteSequence(NoteSequence sequence)
     {
+        this.currentSequence = sequence;
         this.currentSequenceNotes = new Queue<Note>(sequence.GetNotes());
+        this.incompleteSequences.Enqueue(sequence);
     }
 
     private void SpawnArrowDirections(LinkedList<Arrow.Direction> arrowDirections)
@@ -141,6 +179,7 @@ public class ArrowSpawner : MonoBehaviour
         GameObject leftArrow = Instantiate(this.leftArrow, new Vector3(this.leftArrowSpawnX, this.spawnY, 0), Quaternion.identity);
         HitZone hitZone = this.leftHitZone.GetComponent<HitZone>();
         hitZone.AddArrow(leftArrow);
+        this.currentSequence.AddArrowObject(leftArrow);
     }
 
     private void SpawnDownArrow()
@@ -148,6 +187,7 @@ public class ArrowSpawner : MonoBehaviour
         GameObject downArrow = Instantiate(this.downArrow, new Vector3(this.downArrowSpawnX, this.spawnY, 0), Quaternion.identity);
         HitZone hitZone = this.downHitZone.GetComponent<HitZone>();
         hitZone.AddArrow(downArrow);
+        this.currentSequence.AddArrowObject(downArrow);
     }
 
     private void SpawnUpArrow()
@@ -155,6 +195,7 @@ public class ArrowSpawner : MonoBehaviour
         GameObject upArrow = Instantiate(this.upArrow, new Vector3(this.upArrowSpawnX, this.spawnY, 0), Quaternion.identity);
         HitZone hitZone = this.upHitZone.GetComponent<HitZone>();
         hitZone.AddArrow(upArrow);
+        this.currentSequence.AddArrowObject(upArrow);
     }
 
     private void SpawnRightArrow()
@@ -162,6 +203,7 @@ public class ArrowSpawner : MonoBehaviour
         GameObject rightArrow = Instantiate(this.rightArrow, new Vector3(this.rightArrowSpawnX, this.spawnY, 0), Quaternion.identity);
         HitZone hitZone = this.rightHitZone.GetComponent<HitZone>();
         hitZone.AddArrow(rightArrow);
+        this.currentSequence.AddArrowObject(rightArrow);
     }
 
     private Arrow.Direction GetRandomArrowDirection()
