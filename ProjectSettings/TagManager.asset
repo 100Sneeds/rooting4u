@@ -53,3 +53,9 @@ TagManager:
   - name: CardBase
     uniqueID: 893733735
     locked: 0
+  - name: BoardIcons
+    uniqueID: 3022440621
+    locked: 0
+  - name: HandCursor
+    uniqueID: 1147872029
+    locked: 0

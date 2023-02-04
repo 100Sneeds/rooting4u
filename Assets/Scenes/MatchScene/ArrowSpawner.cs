@@ -14,6 +14,8 @@ public class ArrowSpawner : MonoBehaviour
     public GameObject upArrow;
     public GameObject rightArrow;
 
+    public PerformancePhase performancePhase;
+
     private static int BEATS_PER_MINUTE = 120; // quarter notes per minute
 
     private static float WHOLE_NOTES_PER_BEAT = 0.25f;
@@ -36,7 +38,7 @@ public class ArrowSpawner : MonoBehaviour
     private Queue<Note> currentSequenceNotes;
 
     private Queue<NoteSequence> incompleteSequences = new Queue<NoteSequence>();
-    private Queue<NoteSequence> sequenceSpawnQueue;
+    public Queue<NoteSequence> sequenceSpawnQueue = new Queue<NoteSequence>();
 
     // Start is called before the first frame update
     void Start()
@@ -57,9 +59,15 @@ public class ArrowSpawner : MonoBehaviour
             this.timerSeconds -= this.delayToNextNoteSeconds;
             if (this.currentSequenceNotes == null || this.currentSequenceNotes.Count == 0)
             {
-                // TODO allow some mechanism for external objects to add sequences to the queue
-                this.SetCurrentNoteSequence(NoteSequenceGenerator.GetRandomEasyNoteSequence());
-                this.delayToNextNoteSeconds = 0f;
+                if (sequenceSpawnQueue.Count > 0)
+                {
+                    this.SetCurrentNoteSequence(sequenceSpawnQueue.Dequeue());
+                    this.delayToNextNoteSeconds = 0f;
+                }
+                else
+                {
+                    this.delayToNextNoteSeconds = GetNoteDurationInSeconds(NoteDuration.Quarter);
+                }
             }
             else
             {
@@ -74,6 +82,11 @@ public class ArrowSpawner : MonoBehaviour
         {
             this.UpdateAndResolveIncompleteSequences(this.incompleteSequences);
         }
+    }
+
+    public void AddSequenceToQueue(NoteSequence sequence)
+    {
+        this.sequenceSpawnQueue.Enqueue(sequence);
     }
 
     private static float GetNoteDurationInSeconds(NoteDuration noteDuration)
@@ -108,18 +121,7 @@ public class ArrowSpawner : MonoBehaviour
             
             if (spawnState == NoteSequence.SpawnState.PastHitZone)
             {
-                if (nextSequence.GetSuccessState() == NoteSequence.SuccessState.FullCombo)
-                {
-                    Debug.Log("Full Combo!");
-                }
-                if (nextSequence.GetSuccessState() == NoteSequence.SuccessState.Success)
-                {
-                    Debug.Log("Success");
-                }
-                if (nextSequence.GetSuccessState() == NoteSequence.SuccessState.Fail)
-                {
-                    Debug.Log("Fail");
-                }
+                this.performancePhase.HandleSequenceResult(nextSequence.GetSuccessState());
                 incompleteSequences.Dequeue();
             }
         }

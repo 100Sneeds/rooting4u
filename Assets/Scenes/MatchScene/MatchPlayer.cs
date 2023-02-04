@@ -11,7 +11,7 @@ public class MatchPlayer : MonoBehaviour
     public int currentStamina = 0;
 
     public CardZone deck;
-    public CardZone hand;
+    public Hand hand;
     public CardZone discard;
 
     // Start is called before the first frame update
