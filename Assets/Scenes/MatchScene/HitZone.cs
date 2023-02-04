@@ -16,10 +16,13 @@ public class HitZone : MonoBehaviour
     }
 
     private static float PRESSED_SPRITE_SCALING_FACTOR = 0.9f;
-    private static float PERFECT_HIT_MAX_DISTANCE = 0.1f;
-    private static float GOOD_HIT_MAX_DISTANCE = 0.3f;
+
+    private static float PERFECT_HIT_MAX_DISTANCE = 0.2f;
+
+    private static float GOOD_HIT_MAX_DISTANCE = 0.4f;
     private static float EARLY_MISS_MAX_DISTANCE = 0.8f;
     private static float LATE_MISS_MAX_DISTANCE = 0.2f;
+
     private static float MISSED_ARROW_DESTROY_DELAY = 4.0f;
 
     private Vector3 initialScale;
