@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class MatchStateController : MonoBehaviour
 {
-    enum MatchState
+    public enum MatchState
     {
         Setup,
         FirstTurn,
@@ -13,7 +13,7 @@ public class MatchStateController : MonoBehaviour
         GameEnd,
     }
 
-    enum PlayerSlot
+    public enum PlayerSlot
     {
         PlayerOne, // left player
         PlayerTwo, // right player
@@ -21,6 +21,10 @@ public class MatchStateController : MonoBehaviour
 
     public static MatchState INITIAL_MATCH_STATE = MatchState.Setup;
     public MatchState currentMatchState = MatchStateController.INITIAL_MATCH_STATE;
+
+    public SetupPhase setupPhase;
+
+    private PlayerSlot startingPlayerSlot;
 
     // Start is called before the first frame update
     void Start()
@@ -33,8 +37,9 @@ public class MatchStateController : MonoBehaviour
     {
         switch (currentMatchState) {
             case MatchState.Setup:
-                // run setup
-                // get first player
+                setupPhase.Setup();
+                this.startingPlayerSlot = setupPhase.GetStartingPlayerSlot();
+                // delay for animations
                 break;
             case MatchState.FirstTurn:
                 // run first turn
