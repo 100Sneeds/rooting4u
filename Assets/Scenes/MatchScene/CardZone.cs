@@ -4,21 +4,13 @@ using UnityEngine;
 
 public class CardZone : MonoBehaviour
 {
-    public enum Owner
-    {
-        NoOwner,
-        PlayerOne,
-        PlayerTwo,
-    }
-
     public bool isRenderedZone = false;
     public bool isRenderingAttackOnly = false;
     public float renderedCardScale = 1f;
     public bool hasMaximumCardLimit;
     public int maximumNumberOfCards;
 
-    private Owner owner;
-    private List<GameObject> cardObjects = new List<GameObject>();
+    protected List<GameObject> cardObjects = new List<GameObject>();
 
     // Start is called before the first frame update
     void Start()
@@ -58,6 +50,11 @@ public class CardZone : MonoBehaviour
         this.cardObjects.AddRange(cardObjects);
     }
 
+    public void RemoveCard(GameObject cardObject)
+    {
+        this.cardObjects.Remove(cardObject);
+    }
+
     public bool IsFull()
     {
         if (this.hasMaximumCardLimit)
@@ -81,6 +78,11 @@ public class CardZone : MonoBehaviour
         GameObject topCard = this.cardObjects[0];
         this.cardObjects.Remove(topCard);
         return topCard;
+    }
+
+    public List<GameObject> GetCards()
+    {
+        return this.cardObjects;
     }
 
     public void Shuffle()
@@ -127,6 +129,15 @@ public class CardZone : MonoBehaviour
         }
     }
 
+    protected void ShowCards(List<GameObject> cardObjects)
+    {
+        foreach (GameObject cardObject in cardObjects)
+        {
+            Card card = cardObject.GetComponent<Card>();
+            card.ShowAll();
+        }
+    }
+
     private void HideDefenseHalfOfCards(List<GameObject> cardObjects)
     {
         foreach (GameObject cardObject in cardObjects)
@@ -148,7 +159,7 @@ public class CardZone : MonoBehaviour
         }
     }
 
-    private float GetCardObjectWidth(GameObject cardObject)
+    protected float GetCardObjectWidth(GameObject cardObject)
     {
         SpriteRenderer[] spriteRenderers = cardObject.GetComponentsInChildren<SpriteRenderer>();
         float largestSpriteWidth = 0f;
@@ -161,5 +172,21 @@ public class CardZone : MonoBehaviour
             }
         }
         return largestSpriteWidth;
+    }
+
+    protected float GetCardObjectTop(GameObject cardObject)
+    {
+        SpriteRenderer[] spriteRenderers = cardObject.GetComponentsInChildren<SpriteRenderer>();
+        float largestSpriteTop = 0f;
+        foreach (SpriteRenderer spriteRenderer in spriteRenderers)
+        {
+            Bounds bounds = spriteRenderer.bounds;
+            float spriteTop = bounds.center.y + bounds.extents.y;
+            if (spriteTop > largestSpriteTop)
+            {
+                largestSpriteTop = spriteTop;
+            }
+        }
+        return largestSpriteTop;
     }
 }

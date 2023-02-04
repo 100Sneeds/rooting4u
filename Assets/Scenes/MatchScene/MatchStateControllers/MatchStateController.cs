@@ -4,19 +4,12 @@ using UnityEngine;
 
 public class MatchStateController : MonoBehaviour
 {
-    public enum MatchState
-    {
-        Setup,
-        FirstTurn,
-        PlayerOnePerform,
-        PlayerTwoPerform,
-        GameEnd,
-    }
-
     public static MatchState INITIAL_MATCH_STATE = MatchState.Setup;
     public MatchState currentMatchState = MatchStateController.INITIAL_MATCH_STATE;
 
     public SetupPhase setupPhase;
+    public PerformancePhase performancePhaseOne;
+    public PerformancePhase performancePhaseTwo;
 
     private PlayerSlot startingPlayerSlot;
 
@@ -38,9 +31,16 @@ public class MatchStateController : MonoBehaviour
                 break;
             case MatchState.FirstTurn:
                 // run first turn
+                // controlled by first turn phase objects
+                break;
+            case MatchState.PlayerOnePerformInit:
+                performancePhaseOne.PerformancePhaseInit();
+                this.currentMatchState = MatchState.PlayerOnePerform;
                 break;
             case MatchState.PlayerOnePerform:
                 // run player one perform
+                break;
+            case MatchState.PlayerTwoPerformInit:
                 break;
             case MatchState.PlayerTwoPerform:
                 // run player two perform
@@ -49,5 +49,10 @@ public class MatchStateController : MonoBehaviour
                 // run game end
                 break;
         }
+    }
+
+    public PlayerSlot GetStartingPlayerSlot()
+    {
+        return this.startingPlayerSlot;
     }
 }

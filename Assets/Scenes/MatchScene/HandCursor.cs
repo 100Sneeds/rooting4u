@@ -4,26 +4,37 @@ using UnityEngine;
 
 public class HandCursor : MonoBehaviour
 {
-    public CardZone hand;
+    public MatchStateController matchStateController;
+    public Hand hand;
     public MatchPlayer owner;
     public KeyCode cursorLeftKey;
     public KeyCode cursorRightKey;
     public KeyCode selectCardKey;
 
     private int cursorIndex = 0;
-    private List<int> selectedIndices = new List<int>();
 
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        this.HandleKeyDownEvents();
-        this.UpdatePosition();
+        bool isActive = this.GetIsActive();
+
+        if (isActive)
+        {
+            this.Show();
+            this.HandleKeyDownEvents();
+            this.UpdatePosition();
+        }
+        else
+        {
+            this.Hide();
+            this.cursorIndex = 0;
+        }
     }
 
     private void HandleKeyDownEvents()
@@ -38,7 +49,7 @@ public class HandCursor : MonoBehaviour
         }
         else if (Input.GetKeyDown(this.selectCardKey))
         {
-
+            this.hand.SelectCardAtIndex(this.cursorIndex);
         }
     }
 
@@ -78,5 +89,39 @@ public class HandCursor : MonoBehaviour
         }
         Vector3 cardPosition = renderedPositions[cursorIndex];
         this.transform.position = cardPosition + new Vector3(0, -0.62f, 0);
+    }
+
+    private bool GetIsActive()
+    {
+        bool isOwnerPlayerOne = this.owner.playerSlot == PlayerSlot.PlayerOne;
+        bool isOwnerPlayerTwo = !isOwnerPlayerOne;
+
+        bool isFirstTurn = matchStateController.currentMatchState == MatchState.FirstTurn;
+        bool isPlayerOneFirstTurn = isFirstTurn && matchStateController.GetStartingPlayerSlot() == PlayerSlot.PlayerOne;
+        bool isPlayerTwoFirstTurn = isFirstTurn && matchStateController.GetStartingPlayerSlot() == PlayerSlot.PlayerTwo;
+
+        bool isPlayerOnePreparing = matchStateController.currentMatchState == MatchState.PlayerTwoPerform;
+        bool isPlayerTwoPreparing = matchStateController.currentMatchState == MatchState.PlayerOnePerform;
+
+        bool isPlayerOneChoosingCards = isPlayerOneFirstTurn || isPlayerOnePreparing;
+        bool isPlayerTwoChoosingCards = isPlayerTwoFirstTurn || isPlayerTwoPreparing;
+
+        return (isOwnerPlayerOne && isPlayerOneChoosingCards) || (isOwnerPlayerTwo && isPlayerTwoChoosingCards);
+    }
+
+    private void Hide()
+    {
+        SpriteRenderer spriteRenderer = this.GetComponent<SpriteRenderer>();
+        Color color = spriteRenderer.color;
+        color.a = 0;
+        spriteRenderer.color = color;
+    }
+
+    private void Show()
+    {
+        SpriteRenderer spriteRenderer = this.GetComponent<SpriteRenderer>();
+        Color color = spriteRenderer.color;
+        color.a = 1;
+        spriteRenderer.color = color;
     }
 }

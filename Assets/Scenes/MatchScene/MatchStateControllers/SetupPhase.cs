@@ -40,14 +40,11 @@ public class SetupPhase : MonoBehaviour
 
         SetPlayerInitialStamina(matchPlayerOne);
         SetPlayerInitialStamina(matchPlayerTwo);
-
-        Debug.Log("setup done");
-        Debug.Log("player one deck size " + matchPlayerOne.deck.GetCardCount());
-        Debug.Log("player one hand size " + matchPlayerOne.hand.GetCardCount());
     }
 
     private PlayerSlot DecideStartingPlayer()
     {
+        return PlayerSlot.PlayerOne; // Set to human player for now
         float randomValue = Random.Range(-1, 1);
         if (randomValue < 0)
         {

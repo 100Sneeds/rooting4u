@@ -48,7 +48,6 @@ public class NoteSequence
 
     public SpawnState GetSpawnState()
     {
-        // Debug.Log(this.arrowObjects.Count + " " + this.notes.Length);
         if (this.arrowObjects.Count < this.notes.Length)
         {
             return SpawnState.NotFullySpawned;
