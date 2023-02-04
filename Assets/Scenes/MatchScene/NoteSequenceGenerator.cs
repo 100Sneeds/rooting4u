@@ -18,19 +18,19 @@ public static class NoteSequenceGenerator
     public static NoteSequence GetRandomEasyNoteSequence()
     {
         int randomIndex = Random.Range(0, numEasySequences);
-        return NoteSequenceGenerator.easyNoteSequences[randomIndex];
+        return GetNoteSequenceCopy(NoteSequenceGenerator.easyNoteSequences[randomIndex]);
     }
 
     public static NoteSequence GetRandomMediumNoteSequence()
     {
         int randomIndex = Random.Range(0, numMediumSequences);
-        return NoteSequenceGenerator.mediumNoteSequences[randomIndex];
+        return GetNoteSequenceCopy(NoteSequenceGenerator.mediumNoteSequences[randomIndex]);
     }
 
     public static NoteSequence GetRandomHardNoteSequence()
     {
         int randomIndex = Random.Range(0, numHardSequences);
-        return NoteSequenceGenerator.hardNoteSequences[randomIndex];
+        return GetNoteSequenceCopy(NoteSequenceGenerator.hardNoteSequences[randomIndex]);
     }
 
     public static NoteSequence GetNoteSequenceOfCard(Card card)
@@ -64,5 +64,26 @@ public static class NoteSequenceGenerator
         {
             return SequenceDifficulty.Hard;
         }
+    }
+
+    private static NoteSequence GetNoteSequenceCopy(NoteSequence sequenceToCopy)
+    {
+        SequenceDifficulty difficulty = sequenceToCopy.GetDifficulty();
+        Note[] notes = sequenceToCopy.GetNotes();
+
+        Note[] newNotes = NoteSequenceGenerator.GetNotesCopy(notes);
+        return new NoteSequence(difficulty, newNotes);
+    }
+
+    private static Note[] GetNotesCopy(Note[] notesToCopy)
+    {
+        Note[] newNotes = new Note[notesToCopy.Length];
+        for (int noteIndex = 0; noteIndex < notesToCopy.Length; noteIndex++)
+        {
+            Note noteToCopy = notesToCopy[noteIndex];
+            Note newNote = noteToCopy.GetCopy();
+            newNotes[noteIndex] = newNote;
+        }
+        return newNotes;
     }
 }

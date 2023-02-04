@@ -14,6 +14,14 @@ public class Arrow : MonoBehaviour
         Right
     }
 
+    public enum SuccessState {
+        HasNotReachedHitZone,
+        Miss,
+        Hit,
+    }
+
+    public SuccessState successState = SuccessState.HasNotReachedHitZone;
+
     // Start is called before the first frame update
     void Start()
     {
