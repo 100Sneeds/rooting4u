@@ -107,18 +107,8 @@ public class CardZone : MonoBehaviour
     {
         foreach (GameObject cardObject in cardObjects)
         {
-            this.HideCard(cardObject);
-        }
-    }
-
-    private void HideCard(GameObject cardObject)
-    {
-        SpriteRenderer[] spriteRenderers = cardObject.GetComponentsInChildren<SpriteRenderer>();
-        foreach (SpriteRenderer spriteRenderer in spriteRenderers)
-        {
-            Color color = spriteRenderer.color;
-            color.a = 0;
-            spriteRenderer.color = color;
+            Card card = cardObject.GetComponent<Card>();
+            card.HideAll();
         }
     }
 
@@ -126,17 +116,9 @@ public class CardZone : MonoBehaviour
     {
         foreach (GameObject cardObject in cardObjects)
         {
-            this.HideDefenseHalfOfCard(cardObject);
+            Card card = cardObject.GetComponent<Card>();
+            card.HideDefense();
         }
-    }
-
-    private void HideDefenseHalfOfCard(GameObject cardObject)
-    {
-        GameObject defenseHalf = cardObject.transform.Find("DefenseHalf").gameObject;
-        SpriteRenderer spriteRenderer = defenseHalf.GetComponent<SpriteRenderer>();
-        Color color = spriteRenderer.color;
-        color.a = 0;
-        spriteRenderer.color = color;
     }
 
     private void MoveCardsToRenderedPositions(List<GameObject> cardObjects)
