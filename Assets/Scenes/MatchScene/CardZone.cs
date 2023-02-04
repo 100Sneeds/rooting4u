@@ -103,6 +103,21 @@ public class CardZone : MonoBehaviour
         this.cardObjects.Clear();
     }
 
+    public List<Vector3> GetRenderedPositions()
+    {
+        List<Vector3> renderedPositions = new List<Vector3>();
+
+        Vector3 nextPosition = this.transform.position;
+        foreach (GameObject cardObject in cardObjects)
+        {
+            renderedPositions.Add(nextPosition);
+            float width = this.GetCardObjectWidth(cardObject);
+            nextPosition += new Vector3(width, 0, 0);
+        }
+
+        return renderedPositions;
+    }
+
     private void HideCards(List<GameObject> cardObjects)
     {
         foreach (GameObject cardObject in cardObjects)

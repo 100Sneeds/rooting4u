@@ -53,3 +53,6 @@ TagManager:
   - name: CardBase
     uniqueID: 893733735
     locked: 0
+  - name: HandCursor
+    uniqueID: 1147872029
+    locked: 0
