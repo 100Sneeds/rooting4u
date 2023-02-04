@@ -14,7 +14,13 @@ public class ArrowSpawner : MonoBehaviour
     public GameObject upArrow;
     public GameObject rightArrow;
 
-    private static float ARROW_SPAWN_INTERVAL_SECONDS = 1f;
+    private static int BEATS_PER_MINUTE = 120; // quarter notes per minute
+
+    private static float WHOLE_NOTES_PER_BEAT = 0.25f;
+    private static float SECONDS_PER_MINUTE = 60f;
+
+    private static float WHOLE_NOTES_PER_SECOND = ArrowSpawner.BEATS_PER_MINUTE * ArrowSpawner.WHOLE_NOTES_PER_BEAT / ArrowSpawner.SECONDS_PER_MINUTE;
+    private static float SHORTEST_NOTE_DURATION = ArrowSpawner.GetNoteDurationInSeconds(NoteDuration.Sixteenth);
 
     private float leftArrowSpawnX;
     private float downArrowSpawnX;
@@ -24,6 +30,10 @@ public class ArrowSpawner : MonoBehaviour
     private float spawnY;
 
     private float timerSeconds = 0f;
+    private float delayToNextNoteSeconds = 0f;
+
+    private Queue<Note> currentSequenceNotes;
+    public Queue<NoteSequence> noteSequenceQueue;
 
     // Start is called before the first frame update
     void Start()
@@ -39,10 +49,68 @@ public class ArrowSpawner : MonoBehaviour
     void Update()
     {
         this.timerSeconds += Time.deltaTime;
-        if (this.timerSeconds >= ArrowSpawner.ARROW_SPAWN_INTERVAL_SECONDS)
+        if (this.timerSeconds >= this.delayToNextNoteSeconds)
         {
-            this.SpawnArrow(this.GetRandomArrowDirection());
-            this.timerSeconds -= ArrowSpawner.ARROW_SPAWN_INTERVAL_SECONDS;
+            this.timerSeconds -= this.delayToNextNoteSeconds;
+            if (this.currentSequenceNotes == null || this.currentSequenceNotes.Count == 0)
+            {
+                // this.delayToNextNoteSeconds = ArrowSpawner.SHORTEST_NOTE_DURATION;
+                // TODO allow some mechanism for external objects to add sequences to the queue
+                this.SetCurrentNoteSequence(NoteSequenceGenerator.GetRandomEasyNoteSequence());
+                this.delayToNextNoteSeconds = 0f;
+            }
+            else
+            {
+                Note nextNote = this.currentSequenceNotes.Dequeue();
+                LinkedList<Arrow.Direction> arrowDirections = nextNote.GetArrowDirections();
+                this.SpawnArrowDirections(arrowDirections);
+                this.delayToNextNoteSeconds = ArrowSpawner.GetNoteDurationInSeconds(nextNote.GetDuration());
+            }
+        }
+    }
+
+    private static float GetNoteDurationInSeconds(NoteDuration noteDuration)
+    {
+        float secondsPerWholeNote = 1f / WHOLE_NOTES_PER_SECOND;
+        switch (noteDuration)
+        {
+            case NoteDuration.Whole:
+                return secondsPerWholeNote;
+            case NoteDuration.Half:
+                return secondsPerWholeNote / 2f;
+            case NoteDuration.Quarter:
+                return secondsPerWholeNote / 4f;
+            case NoteDuration.Eighth:
+                return secondsPerWholeNote / 8f;
+            case NoteDuration.Sixteenth:
+                return secondsPerWholeNote / 16f;
+            default:
+                return secondsPerWholeNote;
+        }
+    }
+
+    private void SetCurrentNoteSequence(NoteSequence sequence)
+    {
+        this.currentSequenceNotes = new Queue<Note>(sequence.GetNotes());
+    }
+
+    private void SpawnArrowDirections(LinkedList<Arrow.Direction> arrowDirections)
+    {
+        if (arrowDirections.Contains(Arrow.Direction.Left))
+        {
+            this.SpawnArrow(Arrow.Direction.Left);
+        }
+        if (arrowDirections.Contains(Arrow.Direction.Down))
+        {
+            this.SpawnArrow(Arrow.Direction.Down);
+        }
+        if (arrowDirections.Contains(Arrow.Direction.Up))
+        {
+            this.SpawnArrow(Arrow.Direction.Up);
+        }
+        if (arrowDirections.Contains(Arrow.Direction.Right))
+        {
+            this.SpawnArrow(Arrow.Direction.Right);
         }
     }
 

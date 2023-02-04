@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Arrow : MonoBehaviour
 {
-    public static float SCROLL_SPEED = 2f;
+    public static float SCROLL_SPEED = 3f;
 
     public enum Direction
     {
