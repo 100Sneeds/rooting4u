@@ -50,3 +50,6 @@ TagManager:
   - name: BoardTop
     uniqueID: 3038442349
     locked: 0
+  - name: CardBase
+    uniqueID: 893733735
+    locked: 0

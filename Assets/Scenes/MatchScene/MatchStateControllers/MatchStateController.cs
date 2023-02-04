@@ -13,12 +13,6 @@ public class MatchStateController : MonoBehaviour
         GameEnd,
     }
 
-    public enum PlayerSlot
-    {
-        PlayerOne, // left player
-        PlayerTwo, // right player
-    }
-
     public static MatchState INITIAL_MATCH_STATE = MatchState.Setup;
     public MatchState currentMatchState = MatchStateController.INITIAL_MATCH_STATE;
 
@@ -40,6 +34,7 @@ public class MatchStateController : MonoBehaviour
                 setupPhase.Setup();
                 this.startingPlayerSlot = setupPhase.GetStartingPlayerSlot();
                 // delay for animations
+                this.currentMatchState = MatchState.FirstTurn;
                 break;
             case MatchState.FirstTurn:
                 // run first turn

@@ -51,7 +51,7 @@ public static class NoteSequenceGenerator
 
     private static SequenceDifficulty GetSequenceDifficultyOfCard(Card card)
     {
-        int cardValue = card.statAttack + card.statDefence;
+        int cardValue = card.attackValue + card.defenseValue;
         if (cardValue <= NoteSequenceGenerator.EASY_SEQUENCE_CARD_VALUE_UPPER_LIMIT)
         {
             return SequenceDifficulty.Easy;
