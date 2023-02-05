@@ -3516,6 +3516,7 @@ MonoBehaviour:
   playAgainKey: 13
   cheerleaderOne: {fileID: 367955346}
   cheerleaderTwo: {fileID: 615073193}
+  opponentRandomizer: {fileID: 1781540214}
 --- !u!4 &1247922126
 Transform:
   m_ObjectHideFlags: 0
@@ -3524,7 +3525,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1247922124}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.0369312, y: -0.07189199, z: -0.02044878}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4808,6 +4809,56 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1779807549}
   m_CullTransparentMesh: 1
+--- !u!1 &1781540213
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1781540215}
+  - component: {fileID: 1781540214}
+  m_Layer: 0
+  m_Name: OpponentRandomizer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1781540214
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1781540213}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64639926c4e59cc49bc715a6248e96ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pink: {fileID: 7108339969198208228, guid: 4d6e850a5aa8aa744981ac6b8f4bedc8, type: 3}
+  green: {fileID: 7108339969198208228, guid: 31de7ff9b3455dd4aa1ce4bec6d82e2f, type: 3}
+  orange: {fileID: 7108339969198208228, guid: 8c8e18c8d3f51f940be9ec44c198a04f, type: 3}
+  purple: {fileID: 7108339969198208228, guid: b12780339a0f4ed4f85d0ae5693ddbad, type: 3}
+  yellow: {fileID: 7108339969198208228, guid: 327fe753b1f3c8d4b88cdf1df7dd0cb6, type: 3}
+  numberOfOpponentSkins: 5
+--- !u!4 &1781540215
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1781540213}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 23
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1850455246
 GameObject:
   m_ObjectHideFlags: 0

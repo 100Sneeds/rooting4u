@@ -1,0 +1,188 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &1
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a5e6fedc2472449cead18ef23b5cb30d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Library:
+  - m_Name: Cheering
+    m_Hash: 488264795
+    m_CategoryList: []
+    m_OverrideEntries:
+    - m_Name: CheerLeader1_Sheet_0
+      m_Hash: 295008344
+      m_Sprite: {fileID: -152865660, guid: af0c4a5d2604f9b40816af4e55f28e87, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: -40833835, guid: c6394d103e9889544af401f7100db4ca, type: 3}
+    - m_Name: CheerLeader1_Sheet_1
+      m_Hash: 647121102
+      m_Sprite: {fileID: 420356505, guid: af0c4a5d2604f9b40816af4e55f28e87, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: 372780541, guid: c6394d103e9889544af401f7100db4ca, type: 3}
+    - m_Name: CheerLeader1_Sheet_2
+      m_Hash: 1067129204
+      m_Sprite: {fileID: 1658946729, guid: af0c4a5d2604f9b40816af4e55f28e87, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: 1478312046, guid: c6394d103e9889544af401f7100db4ca, type: 3}
+    - m_Name: CheerLeader1_Sheet_3
+      m_Hash: 144452066
+      m_Sprite: {fileID: 1340752952, guid: af0c4a5d2604f9b40816af4e55f28e87, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: 591903151, guid: c6394d103e9889544af401f7100db4ca, type: 3}
+    - m_Name: CheerLeader1_Sheet_4
+      m_Hash: 385399873
+      m_Sprite: {fileID: 58424603, guid: af0c4a5d2604f9b40816af4e55f28e87, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: -705887195, guid: c6394d103e9889544af401f7100db4ca, type: 3}
+    - m_Name: CheerLeader1_Sheet_5
+      m_Hash: 570395863
+      m_Sprite: {fileID: 1124982676, guid: af0c4a5d2604f9b40816af4e55f28e87, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: 1684948758, guid: c6394d103e9889544af401f7100db4ca, type: 3}
+    - m_Name: CheerLeader1_Sheet_6
+      m_Hash: 955702637
+      m_Sprite: {fileID: -935385020, guid: af0c4a5d2604f9b40816af4e55f28e87, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: 710943207, guid: c6394d103e9889544af401f7100db4ca, type: 3}
+    - m_Name: CheerLeader1_Sheet_7
+      m_Hash: 267513339
+      m_Sprite: {fileID: -1174294105, guid: af0c4a5d2604f9b40816af4e55f28e87, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: -1428417130, guid: c6394d103e9889544af401f7100db4ca, type: 3}
+    - m_Name: CheerLeader1_Sheet_8
+      m_Hash: 525267050
+      m_Sprite: {fileID: -1728040886, guid: af0c4a5d2604f9b40816af4e55f28e87, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: 1369253002, guid: c6394d103e9889544af401f7100db4ca, type: 3}
+    - m_Name: CheerLeader1_Sheet_9
+      m_Hash: 675922172
+      m_Sprite: {fileID: -303534326, guid: af0c4a5d2604f9b40816af4e55f28e87, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: -2010765829, guid: c6394d103e9889544af401f7100db4ca, type: 3}
+    - m_Name: CheerLeader1_Sheet_10
+      m_Hash: 144810718
+      m_Sprite: {fileID: 1048560259, guid: af0c4a5d2604f9b40816af4e55f28e87, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: 573127627, guid: c6394d103e9889544af401f7100db4ca, type: 3}
+    - m_Name: CheerLeader1_Sheet_11
+      m_Hash: 1067881032
+      m_Sprite: {fileID: -1684586655, guid: af0c4a5d2604f9b40816af4e55f28e87, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: -1714403371, guid: c6394d103e9889544af401f7100db4ca, type: 3}
+    - m_Name: CheerLeader1_Sheet_12
+      m_Hash: 649053170
+      m_Sprite: {fileID: 1495699740, guid: af0c4a5d2604f9b40816af4e55f28e87, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: -183074786, guid: c6394d103e9889544af401f7100db4ca, type: 3}
+    - m_Name: CheerLeader1_Sheet_13
+      m_Hash: 296285028
+      m_Sprite: {fileID: 1851087174, guid: af0c4a5d2604f9b40816af4e55f28e87, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: -2104438697, guid: c6394d103e9889544af401f7100db4ca, type: 3}
+    - m_Name: CheerLeader1_Sheet_14
+      m_Hash: 265053895
+      m_Sprite: {fileID: -546212350, guid: af0c4a5d2604f9b40816af4e55f28e87, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: -379328738, guid: c6394d103e9889544af401f7100db4ca, type: 3}
+    - m_Name: CheerLeader1_Sheet_15
+      m_Hash: 952850001
+      m_Sprite: {fileID: -1322777233, guid: af0c4a5d2604f9b40816af4e55f28e87, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: 891046257, guid: c6394d103e9889544af401f7100db4ca, type: 3}
+    m_FromMain: 1
+    m_EntryOverrideCount: 16
+  - m_Name: Thinking
+    m_Hash: 107447574
+    m_CategoryList: []
+    m_OverrideEntries:
+    - m_Name: CheerLeader1_Sheet_16
+      m_Hash: 566364139
+      m_Sprite: {fileID: 1079837790, guid: af0c4a5d2604f9b40816af4e55f28e87, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: -772916914, guid: c6394d103e9889544af401f7100db4ca, type: 3}
+    - m_Name: CheerLeader1_Sheet_17
+      m_Hash: 382023549
+      m_Sprite: {fileID: -1147155324, guid: af0c4a5d2604f9b40816af4e55f28e87, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: -2129721609, guid: c6394d103e9889544af401f7100db4ca, type: 3}
+    - m_Name: CheerLeader1_Sheet_18
+      m_Hash: 108669676
+      m_Sprite: {fileID: -1826111219, guid: af0c4a5d2604f9b40816af4e55f28e87, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: 1234786854, guid: c6394d103e9889544af401f7100db4ca, type: 3}
+    - m_Name: CheerLeader1_Sheet_19
+      m_Hash: 830282362
+      m_Sprite: {fileID: -1960708637, guid: af0c4a5d2604f9b40816af4e55f28e87, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: 987878159, guid: c6394d103e9889544af401f7100db4ca, type: 3}
+    - m_Name: CheerLeader1_Sheet_20
+      m_Hash: 596439325
+      m_Sprite: {fileID: -1624014815, guid: af0c4a5d2604f9b40816af4e55f28e87, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: 49248033, guid: c6394d103e9889544af401f7100db4ca, type: 3}
+    - m_Name: CheerLeader1_Sheet_21
+      m_Hash: 344703371
+      m_Sprite: {fileID: 1266867752, guid: af0c4a5d2604f9b40816af4e55f28e87, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: 1081528567, guid: c6394d103e9889544af401f7100db4ca, type: 3}
+    - m_Name: CheerLeader1_Sheet_22
+      m_Hash: 226660401
+      m_Sprite: {fileID: 1743963147, guid: af0c4a5d2604f9b40816af4e55f28e87, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: 302094923, guid: c6394d103e9889544af401f7100db4ca, type: 3}
+    - m_Name: CheerLeader1_Sheet_23
+      m_Hash: 981835943
+      m_Sprite: {fileID: 1043430125, guid: af0c4a5d2604f9b40816af4e55f28e87, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: -120218819, guid: c6394d103e9889544af401f7100db4ca, type: 3}
+    - m_Name: CheerLeader1_Sheet_24
+      m_Hash: 618738948
+      m_Sprite: {fileID: -2138464848, guid: af0c4a5d2604f9b40816af4e55f28e87, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: 101740728, guid: c6394d103e9889544af401f7100db4ca, type: 3}
+    - m_Name: CheerLeader1_Sheet_25
+      m_Hash: 333841810
+      m_Sprite: {fileID: -750950195, guid: af0c4a5d2604f9b40816af4e55f28e87, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: -891353696, guid: c6394d103e9889544af401f7100db4ca, type: 3}
+    - m_Name: CheerLeader1_Sheet_26
+      m_Hash: 183456808
+      m_Sprite: {fileID: -539973490, guid: af0c4a5d2604f9b40816af4e55f28e87, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: -1572809070, guid: c6394d103e9889544af401f7100db4ca, type: 3}
+    - m_Name: CheerLeader1_Sheet_27
+      m_Hash: 1038640318
+      m_Sprite: {fileID: 8681922, guid: af0c4a5d2604f9b40816af4e55f28e87, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: -1555962842, guid: c6394d103e9889544af401f7100db4ca, type: 3}
+    - m_Name: CheerLeader1_Sheet_28
+      m_Hash: 760707375
+      m_Sprite: {fileID: 1721864714, guid: af0c4a5d2604f9b40816af4e55f28e87, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: -2021993087, guid: c6394d103e9889544af401f7100db4ca, type: 3}
+    - m_Name: CheerLeader1_Sheet_29
+      m_Hash: 441469369
+      m_Sprite: {fileID: 1103134486, guid: af0c4a5d2604f9b40816af4e55f28e87, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: -605678894, guid: c6394d103e9889544af401f7100db4ca, type: 3}
+    - m_Name: CheerLeader1_Sheet_30
+      m_Hash: 983023708
+      m_Sprite: {fileID: -950736217, guid: af0c4a5d2604f9b40816af4e55f28e87, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: 156157197, guid: c6394d103e9889544af401f7100db4ca, type: 3}
+    - m_Name: CheerLeader1_Sheet_31
+      m_Hash: 227602634
+      m_Sprite: {fileID: 1462046020, guid: af0c4a5d2604f9b40816af4e55f28e87, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: 283262862, guid: c6394d103e9889544af401f7100db4ca, type: 3}
+    m_FromMain: 1
+    m_EntryOverrideCount: 16
+  m_PrimaryLibraryGUID: 34ac1dedcf1097a48b5ab2a25ba10410
