@@ -32,6 +32,7 @@ public class PerformancePhase : MonoBehaviour
         List<GameObject> defenseCards = this.GetDefenseCards();
         List<NoteSequence> sequencesForCards = this.GetSequencesFromCards(defenseCards);
         this.AddSequencesToQueue(sequencesForCards);
+        this.preparingPlayer.currentStamina += this.preparingPlayer.baseStaminaRegeneration;
     }
 
     public void HandleSequenceResult(NoteSequence.SuccessState successState)
