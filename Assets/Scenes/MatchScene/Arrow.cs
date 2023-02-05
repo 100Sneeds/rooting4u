@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Arrow : MonoBehaviour
 {
-    public static float SCROLL_SPEED = 2f;
+    public static float SCROLL_SPEED = 3f;
 
     public enum Direction
     {
@@ -13,6 +13,14 @@ public class Arrow : MonoBehaviour
         Up,
         Right
     }
+
+    public enum SuccessState {
+        HasNotReachedHitZone,
+        Miss,
+        Hit,
+    }
+
+    public SuccessState successState = SuccessState.HasNotReachedHitZone;
 
     // Start is called before the first frame update
     void Start()

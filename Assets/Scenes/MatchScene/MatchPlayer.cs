@@ -4,11 +4,15 @@ using UnityEngine;
 
 public class MatchPlayer : MonoBehaviour
 {
-    public MatchStateController.PlayerSlot playerSlot;
+    public PlayerSlot playerSlot;
 
     public int baseStaminaRegeneration = 1;
     public int startingStamina = 3;
     public int currentStamina = 0;
+
+    public CardZone deck;
+    public Hand hand;
+    public CardZone discard;
 
     // Start is called before the first frame update
     void Start()
@@ -20,5 +24,18 @@ public class MatchPlayer : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public void DrawCardsUntilHandFull()
+    {
+        while (!hand.IsFull())
+        {
+            if (deck.IsEmpty())
+            {
+                discard.ShuffleAllIntoZone(deck);
+            }
+            GameObject drawnCard = deck.DrawCard();
+            hand.AddCard(drawnCard);
+        }
     }
 }

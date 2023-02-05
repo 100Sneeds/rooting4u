@@ -16,11 +16,12 @@ public class HitZone : MonoBehaviour
     }
 
     private static float PRESSED_SPRITE_SCALING_FACTOR = 0.9f;
-    private static float PERFECT_HIT_MAX_DISTANCE = 0.1f;
-    private static float GOOD_HIT_MAX_DISTANCE = 0.3f;
+
+    private static float PERFECT_HIT_MAX_DISTANCE = 0.2f;
+
+    private static float GOOD_HIT_MAX_DISTANCE = 0.4f;
     private static float EARLY_MISS_MAX_DISTANCE = 0.8f;
     private static float LATE_MISS_MAX_DISTANCE = 0.2f;
-    private static float MISSED_ARROW_DESTROY_DELAY = 4.0f;
 
     private Vector3 initialScale;
     private Vector3 pressedScale;
@@ -74,23 +75,23 @@ public class HitZone : MonoBehaviour
 
     private void ProcessArrowActivation(GameObject arrow)
     {
-        SuccessLevel successLevel = this.GetArrowSuccessLevel(arrow);
+        HitZone.SuccessLevel successLevel = this.GetArrowSuccessLevel(arrow);
         
-        if (successLevel == SuccessLevel.Perfect)
+        if (successLevel == HitZone.SuccessLevel.Perfect)
         {
             this.ProcessArrowPerfectHit(arrow);
         }
-        if (successLevel == SuccessLevel.Good)
+        if (successLevel == HitZone.SuccessLevel.Good)
         {
             this.ProcessArrowGoodHit(arrow);
         }
-        if (successLevel == SuccessLevel.Early || successLevel == SuccessLevel.Late)
+        if (successLevel == HitZone.SuccessLevel.Early || successLevel == HitZone.SuccessLevel.Late)
         {
             this.ProcessArrowMiss(arrow);
         }
     }
 
-    private SuccessLevel GetArrowSuccessLevel(GameObject arrow)
+    private HitZone.SuccessLevel GetArrowSuccessLevel(GameObject arrow)
     {
         float arrowY = arrow.transform.position.y;
         float hitZoneY = this.transform.position.y;
@@ -136,9 +137,11 @@ public class HitZone : MonoBehaviour
         this.DeleteMissedArrow(arrow);
     }
 
-    private void DeleteHitArrow(GameObject arrow)
+    private void DeleteHitArrow(GameObject arrowObject)
     {
-        Destroy(arrow);
+        Arrow arrow = arrowObject.GetComponent<Arrow>();
+        arrow.successState = Arrow.SuccessState.Hit;
+        this.HideArrowSprite(arrowObject);
         this.arrowQueue.Dequeue();
         if (this.arrowQueue.Count > 0)
         {
@@ -150,10 +153,11 @@ public class HitZone : MonoBehaviour
         }
     }
 
-    private void DeleteMissedArrow(GameObject arrow)
+    private void DeleteMissedArrow(GameObject arrowObject)
     {
-        Destroy(arrow, HitZone.MISSED_ARROW_DESTROY_DELAY);
-        this.DarkenArrowSprite(arrow);
+        Arrow arrow = arrowObject.GetComponent<Arrow>();
+        arrow.successState = Arrow.SuccessState.Miss;
+        this.DarkenArrowSprite(arrowObject);
         this.arrowQueue.Dequeue();
         if (this.arrowQueue.Count > 0)
         {
@@ -172,6 +176,14 @@ public class HitZone : MonoBehaviour
         color.r -= 0.5f;
         color.g -= 0.5f;
         color.b -= 0.5f;
+        spriteRenderer.color = color;
+    }
+
+    private void HideArrowSprite(GameObject arrow)
+    {
+        SpriteRenderer spriteRenderer = arrow.GetComponent<SpriteRenderer>();
+        Color color = spriteRenderer.color;
+        color.a = 0;
         spriteRenderer.color = color;
     }
 
