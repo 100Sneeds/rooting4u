@@ -1296,6 +1296,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3330660389284817591, guid: bf8cfed3cf78dbf4ea6bf1876d316aac, type: 3}
+      propertyPath: m_LocalScale.x
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3330660389284817591, guid: bf8cfed3cf78dbf4ea6bf1876d316aac, type: 3}
       propertyPath: m_LocalPosition.x
       value: 2
       objectReference: {fileID: 0}
@@ -2468,8 +2472,9 @@ MonoBehaviour:
   selectCardKey: 0
   idleSprite: {fileID: 21300000, guid: 2401387753590244492e9197b964a8e3, type: 3}
   selectSprite: {fileID: 21300000, guid: 9b4687d1827ad814aaae902d4cff3380, type: 3}
-  isAI: 0
+  isAI: 1
   AIActionDelay: 0.5
+  isActive: 0
 --- !u!212 &871296358
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -4675,6 +4680,7 @@ MonoBehaviour:
   selectSprite: {fileID: 21300000, guid: 9b4687d1827ad814aaae902d4cff3380, type: 3}
   isAI: 0
   AIActionDelay: 0.5
+  isActive: 0
 --- !u!212 &1766048526
 SpriteRenderer:
   m_ObjectHideFlags: 0
