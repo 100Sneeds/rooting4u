@@ -47,7 +47,6 @@ public class PerformancePhase : MonoBehaviour
 
         if (defenseZoneCardIndex == defenseCards.Count)
         {
-            Debug.Log("Resolving damage");
             this.ResolveDamagePhase();
         }
     }

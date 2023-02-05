@@ -11,6 +11,9 @@ public class HandCursor : MonoBehaviour
     public KeyCode cursorRightKey;
     public KeyCode selectCardKey;
 
+    public Sprite idleSprite;
+    public Sprite selectSprite;
+
     private int cursorIndex = 0;
 
     // Start is called before the first frame update
@@ -50,6 +53,16 @@ public class HandCursor : MonoBehaviour
         else if (Input.GetKeyDown(this.selectCardKey))
         {
             this.hand.SelectCardAtIndex(this.cursorIndex);
+        }
+
+        SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
+        if (Input.GetKey(this.selectCardKey))
+        {
+            spriteRenderer.sprite = selectSprite;
+        }
+        else
+        {
+            spriteRenderer.sprite = idleSprite;
         }
     }
 
