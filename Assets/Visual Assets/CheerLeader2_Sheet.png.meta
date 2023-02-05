@@ -42,7 +42,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -70,7 +70,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -103,7 +103,679 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: CheerLeader2_Sheet_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 873
+        width: 253
+        height: 291
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 234f5c4871cd29e468c5a96116ba5c90
+      internalID: -230162414
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CheerLeader2_Sheet_1
+      rect:
+        serializedVersion: 2
+        x: 253
+        y: 873
+        width: 253
+        height: 291
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0c721623fbb59e9498318fb1117f3ce6
+      internalID: 1443128867
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CheerLeader2_Sheet_2
+      rect:
+        serializedVersion: 2
+        x: 506
+        y: 873
+        width: 253
+        height: 291
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f2970f1c0c806b94da5cb14ea3be12ae
+      internalID: -1591787560
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CheerLeader2_Sheet_3
+      rect:
+        serializedVersion: 2
+        x: 759
+        y: 873
+        width: 253
+        height: 291
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9d0b1ae1354154946a5367ba2daddeb6
+      internalID: -1192888630
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CheerLeader2_Sheet_4
+      rect:
+        serializedVersion: 2
+        x: 1012
+        y: 873
+        width: 253
+        height: 291
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1c4ff256c72eafa48aebba136f6157e7
+      internalID: 649884455
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CheerLeader2_Sheet_5
+      rect:
+        serializedVersion: 2
+        x: 1265
+        y: 873
+        width: 253
+        height: 291
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3219e240a960061459cdd51d65a70a65
+      internalID: 1817753962
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CheerLeader2_Sheet_6
+      rect:
+        serializedVersion: 2
+        x: 1518
+        y: 873
+        width: 253
+        height: 291
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0f144621f3bdf5140b56ffe7ccb106f0
+      internalID: 782929691
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CheerLeader2_Sheet_7
+      rect:
+        serializedVersion: 2
+        x: 1771
+        y: 873
+        width: 253
+        height: 291
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 53080a561a834554fa00c14ac474d32c
+      internalID: 121413439
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CheerLeader2_Sheet_8
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 582
+        width: 253
+        height: 291
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 438ce43263bdec045b6be26119cb8fcb
+      internalID: 13553730
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CheerLeader2_Sheet_9
+      rect:
+        serializedVersion: 2
+        x: 253
+        y: 582
+        width: 253
+        height: 291
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 67c71c7cebd77a74d87387d22d228c65
+      internalID: 2082048059
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CheerLeader2_Sheet_10
+      rect:
+        serializedVersion: 2
+        x: 506
+        y: 582
+        width: 253
+        height: 291
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e57e487cc51572546a0f7c69462333f6
+      internalID: -207623040
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CheerLeader2_Sheet_11
+      rect:
+        serializedVersion: 2
+        x: 759
+        y: 582
+        width: 253
+        height: 291
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8ce40e1da592acc478d7c6dca66a620d
+      internalID: -2079214333
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CheerLeader2_Sheet_12
+      rect:
+        serializedVersion: 2
+        x: 1012
+        y: 582
+        width: 253
+        height: 291
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f81ea35dde06c4a47b12b2df4d1286e9
+      internalID: 1527817529
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CheerLeader2_Sheet_13
+      rect:
+        serializedVersion: 2
+        x: 1265
+        y: 582
+        width: 253
+        height: 291
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 796ef722360c820488ef9ffa73029a3b
+      internalID: -874850665
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CheerLeader2_Sheet_14
+      rect:
+        serializedVersion: 2
+        x: 1518
+        y: 582
+        width: 253
+        height: 291
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7e12d4387e36e0342aeb4c5af4ed7232
+      internalID: -1597799047
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CheerLeader2_Sheet_15
+      rect:
+        serializedVersion: 2
+        x: 1771
+        y: 582
+        width: 253
+        height: 291
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 135ccf031c79e3b47bd0748e03004502
+      internalID: 1611882191
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CheerLeader2_Sheet_16
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 291
+        width: 253
+        height: 291
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4338df26063188645baeb39efa0faa0f
+      internalID: -886601374
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CheerLeader2_Sheet_17
+      rect:
+        serializedVersion: 2
+        x: 253
+        y: 291
+        width: 253
+        height: 291
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0fff52e3b8b0b6d4ca1fff5ec7182799
+      internalID: -1204093493
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CheerLeader2_Sheet_18
+      rect:
+        serializedVersion: 2
+        x: 506
+        y: 291
+        width: 253
+        height: 291
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 36865994f6a281d4b95cab0774c5d420
+      internalID: -272626704
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CheerLeader2_Sheet_19
+      rect:
+        serializedVersion: 2
+        x: 759
+        y: 291
+        width: 253
+        height: 291
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 58f271bf5892e72459987a5894707199
+      internalID: -772330716
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CheerLeader2_Sheet_20
+      rect:
+        serializedVersion: 2
+        x: 1012
+        y: 291
+        width: 253
+        height: 291
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 80c051e134055fe4c8ba13986549b1eb
+      internalID: -1337333999
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CheerLeader2_Sheet_21
+      rect:
+        serializedVersion: 2
+        x: 1265
+        y: 291
+        width: 253
+        height: 291
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 09b7040e70276284480e6b99244ded08
+      internalID: -1874365855
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CheerLeader2_Sheet_22
+      rect:
+        serializedVersion: 2
+        x: 1518
+        y: 291
+        width: 253
+        height: 291
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a9071ae81ea55eb4eb83055a89eb41ae
+      internalID: 1570339725
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CheerLeader2_Sheet_23
+      rect:
+        serializedVersion: 2
+        x: 1771
+        y: 291
+        width: 253
+        height: 291
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ef9c7e637ac498646b695098c0a4e50a
+      internalID: -46179149
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CheerLeader2_Sheet_24
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 253
+        height: 291
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 33927e339306df84a895b5ef66fc2a19
+      internalID: -1947582390
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CheerLeader2_Sheet_25
+      rect:
+        serializedVersion: 2
+        x: 253
+        y: 0
+        width: 253
+        height: 291
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 11dcdba1da3aacd4a92aa9e124010b52
+      internalID: -1028860448
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CheerLeader2_Sheet_26
+      rect:
+        serializedVersion: 2
+        x: 506
+        y: 0
+        width: 253
+        height: 291
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cb4d5880a4c0c6342942d88db479e321
+      internalID: 1095772327
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CheerLeader2_Sheet_27
+      rect:
+        serializedVersion: 2
+        x: 759
+        y: 0
+        width: 253
+        height: 291
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 663fede5f750327449871f2a9b08a034
+      internalID: -1921491380
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CheerLeader2_Sheet_28
+      rect:
+        serializedVersion: 2
+        x: 1012
+        y: 0
+        width: 253
+        height: 291
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b4729c88c83501149a0fc8c2fbfa6a2e
+      internalID: -1186222391
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CheerLeader2_Sheet_29
+      rect:
+        serializedVersion: 2
+        x: 1265
+        y: 0
+        width: 253
+        height: 291
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cd2eb673235a21646b4f6cba7a2e1d11
+      internalID: 820559063
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CheerLeader2_Sheet_30
+      rect:
+        serializedVersion: 2
+        x: 1518
+        y: 0
+        width: 253
+        height: 291
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 95bb4c1d73221b34d8c41becc82e8b92
+      internalID: 910399575
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CheerLeader2_Sheet_31
+      rect:
+        serializedVersion: 2
+        x: 1771
+        y: 0
+        width: 253
+        height: 291
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d6914120f7a6ee6448b8a6194d04386f
+      internalID: -677156122
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -114,7 +786,39 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      CheerLeader2_Sheet_11: -2079214333
+      CheerLeader2_Sheet_17: -1204093493
+      CheerLeader2_Sheet_31: -677156122
+      CheerLeader2_Sheet_8: 13553730
+      CheerLeader2_Sheet_15: 1611882191
+      CheerLeader2_Sheet_24: -1947582390
+      CheerLeader2_Sheet_22: 1570339725
+      CheerLeader2_Sheet_28: -1186222391
+      CheerLeader2_Sheet_14: -1597799047
+      CheerLeader2_Sheet_25: -1028860448
+      CheerLeader2_Sheet_13: -874850665
+      CheerLeader2_Sheet_21: -1874365855
+      CheerLeader2_Sheet_4: 649884455
+      CheerLeader2_Sheet_0: -230162414
+      CheerLeader2_Sheet_26: 1095772327
+      CheerLeader2_Sheet_18: -272626704
+      CheerLeader2_Sheet_9: 2082048059
+      CheerLeader2_Sheet_29: 820559063
+      CheerLeader2_Sheet_10: -207623040
+      CheerLeader2_Sheet_27: -1921491380
+      CheerLeader2_Sheet_12: 1527817529
+      CheerLeader2_Sheet_30: 910399575
+      CheerLeader2_Sheet_16: -886601374
+      CheerLeader2_Sheet_23: -46179149
+      CheerLeader2_Sheet_6: 782929691
+      CheerLeader2_Sheet_3: -1192888630
+      CheerLeader2_Sheet_19: -772330716
+      CheerLeader2_Sheet_5: 1817753962
+      CheerLeader2_Sheet_1: 1443128867
+      CheerLeader2_Sheet_2: -1591787560
+      CheerLeader2_Sheet_7: 121413439
+      CheerLeader2_Sheet_20: -1337333999
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
