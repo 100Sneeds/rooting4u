@@ -35,6 +35,7 @@ public class HitZone : MonoBehaviour
     private GameObject lastArrow;
     public ComboCounter comboCounter;
     public ArrowSuccessIndicator arrowSuccessIndicator;
+    public ArrowPow arrowPow;
 
     // Start is called before the first frame update
     void Start()
@@ -163,13 +164,14 @@ public class HitZone : MonoBehaviour
     {
         this.DeleteHitArrow(arrow);
         this.arrowSuccessIndicator.ShowArrowSuccessResult(SuccessLevel.Perfect);
+        Instantiate(this.arrowPow, this.transform.position, Quaternion.identity);
     }
 
     private void ProcessArrowGoodHit(GameObject arrow)
     {
         this.DeleteHitArrow(arrow);
         this.arrowSuccessIndicator.ShowArrowSuccessResult(SuccessLevel.Good);
-
+        Instantiate(this.arrowPow, this.transform.position, Quaternion.identity);
     }
 
     private void ProcessArrowMiss(GameObject arrow)

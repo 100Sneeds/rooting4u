@@ -1275,6 +1275,7 @@ MonoBehaviour:
   difficultyAI: 6
   comboCounter: {fileID: 407932531}
   arrowSuccessIndicator: {fileID: 7558610392280089147}
+  arrowPow: {fileID: 1745985230249096674, guid: 9cea9756f7b070d408713ea412196ec6, type: 3}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -1956,6 +1957,7 @@ MonoBehaviour:
   difficultyAI: 6
   comboCounter: {fileID: 837531236}
   arrowSuccessIndicator: {fileID: 741193441}
+  arrowPow: {fileID: 1745985230249096674, guid: 9cea9756f7b070d408713ea412196ec6, type: 3}
 --- !u!1 &714817494
 GameObject:
   m_ObjectHideFlags: 0
@@ -2250,6 +2252,7 @@ MonoBehaviour:
   difficultyAI: 6
   comboCounter: {fileID: 407932531}
   arrowSuccessIndicator: {fileID: 7558610392280089147}
+  arrowPow: {fileID: 1745985230249096674, guid: 9cea9756f7b070d408713ea412196ec6, type: 3}
 --- !u!1 &837531234
 GameObject:
   m_ObjectHideFlags: 0
@@ -2556,6 +2559,7 @@ MonoBehaviour:
   difficultyAI: 6
   comboCounter: {fileID: 837531236}
   arrowSuccessIndicator: {fileID: 741193441}
+  arrowPow: {fileID: 1745985230249096674, guid: 9cea9756f7b070d408713ea412196ec6, type: 3}
 --- !u!1 &958829233
 GameObject:
   m_ObjectHideFlags: 0
@@ -2863,6 +2867,7 @@ MonoBehaviour:
   difficultyAI: 6
   comboCounter: {fileID: 837531236}
   arrowSuccessIndicator: {fileID: 741193441}
+  arrowPow: {fileID: 1745985230249096674, guid: 9cea9756f7b070d408713ea412196ec6, type: 3}
 --- !u!1 &1062407994
 GameObject:
   m_ObjectHideFlags: 0
@@ -2999,6 +3004,7 @@ MonoBehaviour:
   difficultyAI: 6
   comboCounter: {fileID: 407932531}
   arrowSuccessIndicator: {fileID: 7558610392280089147}
+  arrowPow: {fileID: 1745985230249096674, guid: 9cea9756f7b070d408713ea412196ec6, type: 3}
 --- !u!1 &1090984516
 GameObject:
   m_ObjectHideFlags: 0
@@ -3711,6 +3717,7 @@ MonoBehaviour:
   difficultyAI: 6
   comboCounter: {fileID: 837531236}
   arrowSuccessIndicator: {fileID: 741193441}
+  arrowPow: {fileID: 1745985230249096674, guid: 9cea9756f7b070d408713ea412196ec6, type: 3}
 --- !u!1 &1315044977
 GameObject:
   m_ObjectHideFlags: 0
@@ -3863,6 +3870,7 @@ MonoBehaviour:
   difficultyAI: 6
   comboCounter: {fileID: 407932531}
   arrowSuccessIndicator: {fileID: 7558610392280089147}
+  arrowPow: {fileID: 1745985230249096674, guid: 9cea9756f7b070d408713ea412196ec6, type: 3}
 --- !u!1 &1400021738
 GameObject:
   m_ObjectHideFlags: 0
