@@ -9,6 +9,9 @@ public class SetupPhase : MonoBehaviour
 
     public MatchPlayer matchPlayerOne;
     public MatchPlayer matchPlayerTwo;
+
+    public CoinFlip coinFlip;
+
     private PlayerSlot startingPlayerSlot;
 
     // Start is called before the first frame update
@@ -31,6 +34,14 @@ public class SetupPhase : MonoBehaviour
     public void Setup()
     {
         this.startingPlayerSlot = DecideStartingPlayer();
+        if (this.startingPlayerSlot == PlayerSlot.PlayerOne)
+        {
+            coinFlip.result = CoinFlip.Result.Home;
+        }
+        else
+        {
+            coinFlip.result = CoinFlip.Result.Away;
+        }
 
         SetPlayerInitialDeck(matchPlayerOne, persistentPlayerOne);
         SetPlayerInitialDeck(matchPlayerTwo, persistentPlayerTwo);
