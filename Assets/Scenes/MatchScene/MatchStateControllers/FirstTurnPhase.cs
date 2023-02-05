@@ -10,6 +10,8 @@ public class FirstTurnPhase : MonoBehaviour
 
     public KeyCode confirmCardSelectKey;
 
+    public HandCursor aiCursor;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -21,7 +23,7 @@ public class FirstTurnPhase : MonoBehaviour
     {
         if (matchStateController.GetStartingPlayerSlot() == owner.playerSlot)
         {
-            if (matchStateController.currentMatchState == MatchState.FirstTurn && Input.GetKeyDown(confirmCardSelectKey))
+            if (matchStateController.currentMatchState == MatchState.FirstTurn && (Input.GetKeyDown(confirmCardSelectKey) || aiCursor.isAiCursorSelectionDone))
             {
                 this.ConfirmCardSelection();
             }

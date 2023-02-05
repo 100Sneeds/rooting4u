@@ -20,8 +20,6 @@ public class PlayerAI
     }
 
     public void generateNextHitTiming(int combo){
-        //Debug.Log("Incoming Combo: "+ combo);
-        //Debug.Log("diff modifier: "+ Mathf.Floor(combo / 2) * (2 * difficulty + 1));
         int currentProbability = baseProbability + (int)(Mathf.Floor(combo / 2) * (2 * difficulty + 1));
         int hitRNG = Random.Range(0, currentProbability);
         // Perfect hit
@@ -38,7 +36,8 @@ public class PlayerAI
         else{
             // Decide whether it's early or late
             nextHitTiming = - 1f;
-            //Debug.Log("MISS");
         }
+
+        nextHitTiming = Random.Range(0f, 0.4f + (combo / 20f));
     }
 }

@@ -23,6 +23,8 @@ public class HandCursor : MonoBehaviour
     public Stack<int> cardIndexStack;  // Stack of cards to select
     private bool wasLastFrameActive;
 
+    public bool isAiCursorSelectionDone = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -43,6 +45,7 @@ public class HandCursor : MonoBehaviour
         isActive = this.GetIsActive();
         // If the last frame was not active, we come up with a series of commands
         if (!wasLastFrameActive){
+            isAiCursorSelectionDone = false;
             cardIndexStack = new Stack<int>();
             
             List<int> indexList = new List<int> {0, 1, 2};
@@ -58,10 +61,8 @@ public class HandCursor : MonoBehaviour
             cardIndexStack.Push(indexList[0]);
             cardIndexStack.Push(indexList[1]);
             cardIndexStack.Push(indexList[2]);
-            Debug.Log("THE CARDS HAVE BEEN PUT INTO PLACE");
 
         }
-        Debug.Log(cardIndexStack.Count);
         this.UpdatePosition();
         if (isActive && cardIndexStack.Count != 0) {
             AIActionDelay -= Time.deltaTime;
@@ -75,6 +76,10 @@ public class HandCursor : MonoBehaviour
                 this.hand.SelectCardAtIndex(i);
                 AIActionDelay = 0.5f;
                 
+            }
+            if (cardIndexStack.Count == 0)
+            {
+                this.isAiCursorSelectionDone = true;
             }
         }
         wasLastFrameActive = isActive;
