@@ -43,7 +43,6 @@ public class ProgressIndicator : MonoBehaviour
 
         float lerpPercent = lerpTimer / POSITION_LERP_DURATION_SECONDS;
         this.transform.position = Vector3.Lerp(sourceVector, destinationVector, lerpPercent);
-        Debug.Log(this.transform.position);
     }
 
     private Vector3 GetDestinationPositionForScore(int score)
