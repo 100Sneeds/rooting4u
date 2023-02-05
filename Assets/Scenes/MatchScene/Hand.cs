@@ -68,6 +68,20 @@ public class Hand : CardZone
         return selectedCards;
     }
 
+    public List<GameObject> GetAffordableCards()
+    {
+        List<GameObject> affordableCards = new List<GameObject>();
+        foreach (GameObject cardObject in this.cardObjects)
+        {
+            Card card = cardObject.GetComponent<Card>();
+            if (card.staminaCost <= owner.currentStamina)
+            {
+                affordableCards.Add(cardObject);
+            }
+        }
+        return affordableCards;
+    }
+
     public void ClearSelection()
     {
         this.selectedIndices.Clear();

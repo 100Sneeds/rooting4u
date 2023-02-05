@@ -6,6 +6,7 @@ public class CardZone : MonoBehaviour
 {
     public bool isRenderedZone = false;
     public bool isRenderingAttackOnly = false;
+    public bool isHidingStamina = false;
     public float renderedCardScale = 1f;
     public bool hasMaximumCardLimit;
     public int maximumNumberOfCards;
@@ -31,6 +32,10 @@ public class CardZone : MonoBehaviour
             {
                 this.HideDefenseHalfOfCards(this.cardObjects);
             }
+            if (this.isHidingStamina)
+            {
+                this.HideStaminaOfCards(this.cardObjects);
+            }
             this.MoveCardsToRenderedPositions(this.cardObjects);
         }
     }
@@ -53,6 +58,11 @@ public class CardZone : MonoBehaviour
     public void RemoveCard(GameObject cardObject)
     {
         this.cardObjects.Remove(cardObject);
+    }
+
+    public void ClearCards()
+    {
+        this.cardObjects.Clear();
     }
 
     public bool IsFull()
@@ -144,6 +154,15 @@ public class CardZone : MonoBehaviour
         {
             Card card = cardObject.GetComponent<Card>();
             card.HideDefense();
+        }
+    }
+
+    private void HideStaminaOfCards(List<GameObject> cardObjects)
+    {
+        foreach (GameObject cardObject in cardObjects)
+        {
+            Card card = cardObject.GetComponent<Card>();
+            card.HideStamina();
         }
     }
 

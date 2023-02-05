@@ -87,7 +87,7 @@ public class Card : MonoBehaviour
         return this.defenseValue;
     }
 
-    public int CalculateDamageToDefender(Card attacker, Card defender)
+    public static int CalculateDamageToDefender(Card attacker, Card defender)
     {
         if (attacker.attackColor == defender.defenseColor)
         {
