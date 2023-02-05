@@ -15,8 +15,9 @@ public class ArrowSpawner : MonoBehaviour
     public GameObject rightArrow;
 
     public PerformancePhase performancePhase;
+    public BeatMarker beatMarker;
 
-    private static int BEATS_PER_MINUTE = 120; // quarter notes per minute
+    private static int BEATS_PER_MINUTE = 185; // quarter notes per minute
 
     private static float WHOLE_NOTES_PER_BEAT = 0.25f;
     private static float SECONDS_PER_MINUTE = 60f;
@@ -33,6 +34,9 @@ public class ArrowSpawner : MonoBehaviour
 
     private float timerSeconds = 0f;
     private float delayToNextNoteSeconds = 0f;
+
+    private float beatTimerSeconds = 0f;
+    private float delayToNextBeatSeconds = ArrowSpawner.GetNoteDurationInSeconds(NoteDuration.Whole);
 
     private NoteSequence currentSequence;
     private Queue<Note> currentSequenceNotes;
@@ -54,9 +58,12 @@ public class ArrowSpawner : MonoBehaviour
     void Update()
     {
         this.timerSeconds += Time.deltaTime;
-        if (this.timerSeconds >= this.delayToNextNoteSeconds)
+        this.beatTimerSeconds += Time.deltaTime;
+        if (this.beatTimerSeconds >= this.delayToNextBeatSeconds)
         {
-            this.timerSeconds -= this.delayToNextNoteSeconds;
+            this.beatTimerSeconds -= this.delayToNextBeatSeconds;
+            this.SpawnBeatMarker();
+
             if (this.currentSequenceNotes == null || this.currentSequenceNotes.Count == 0)
             {
                 if (sequenceSpawnQueue.Count > 0)
@@ -68,6 +75,15 @@ public class ArrowSpawner : MonoBehaviour
                 {
                     this.delayToNextNoteSeconds = GetNoteDurationInSeconds(NoteDuration.Quarter);
                 }
+            }
+        }
+
+        if (this.timerSeconds >= this.delayToNextNoteSeconds)
+        {
+            this.timerSeconds -= this.delayToNextNoteSeconds;
+            if (this.currentSequenceNotes == null || this.currentSequenceNotes.Count == 0)
+            {
+
             }
             else
             {
@@ -89,7 +105,7 @@ public class ArrowSpawner : MonoBehaviour
         this.sequenceSpawnQueue.Enqueue(sequence);
     }
 
-    private static float GetNoteDurationInSeconds(NoteDuration noteDuration)
+    public static float GetNoteDurationInSeconds(NoteDuration noteDuration)
     {
         float secondsPerWholeNote = 1f / WHOLE_NOTES_PER_SECOND;
         switch (noteDuration)
@@ -224,5 +240,10 @@ public class ArrowSpawner : MonoBehaviour
             default:
                 return Arrow.Direction.Left;
         }
+    }
+
+    private void SpawnBeatMarker()
+    {
+        Instantiate(beatMarker, this.transform.position, Quaternion.identity);
     }
 }

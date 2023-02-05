@@ -4,7 +4,10 @@ using UnityEngine;
 
 public class Arrow : MonoBehaviour
 {
-    public static float SCROLL_SPEED = 3f;
+    public static float HITZONE_Y = 3.6f - 0.25f;
+    public static float BEATS_FROM_SPAWN_TO_HITZONE = 8;
+
+    private float speed;
 
     public Sprite missSprite;
 
@@ -32,12 +35,17 @@ public class Arrow : MonoBehaviour
         GameObject child = this.transform.Find("ArrowSprite").gameObject;
         spriteRenderer = child.GetComponent<SpriteRenderer>();
         animator = child.GetComponent<Animator>();
+
+        float secondsPerBeat = ArrowSpawner.GetNoteDurationInSeconds(NoteDuration.Quarter);
+        float secondsToHitZone = BEATS_FROM_SPAWN_TO_HITZONE * secondsPerBeat;
+        float distanceToHitZone = Mathf.Abs(this.transform.position.y - HITZONE_Y);
+        speed = distanceToHitZone / secondsToHitZone;
     }
 
     // Update is called once per frame
     void Update()
     {
-        this.transform.position += new Vector3(0, Arrow.SCROLL_SPEED * Time.deltaTime, 0);
+        this.transform.position += new Vector3(0, speed * Time.deltaTime, 0);
     }
 
     public SuccessState GetSuccessState()

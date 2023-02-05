@@ -55,7 +55,6 @@ public class SetupPhase : MonoBehaviour
 
     private PlayerSlot DecideStartingPlayer()
     {
-        return PlayerSlot.PlayerOne; // Set to human player for now
         float randomValue = Random.Range(-1, 1);
         if (randomValue < 0)
         {
