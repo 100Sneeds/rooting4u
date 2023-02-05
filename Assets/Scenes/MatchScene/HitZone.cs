@@ -72,7 +72,7 @@ public class HitZone : MonoBehaviour
                 this.ProcessArrowActivation(this.currentArrow);
                 this.transform.localScale = pressedScale;
                 // generate next note hit timing
-                this.playerAI.generateNextHitTiming(combo: comboCounter.combo);
+                this.playerAI.generateNextHitTiming(1);
             }
         }
     }
@@ -115,12 +115,12 @@ public class HitZone : MonoBehaviour
         if (successLevel == HitZone.SuccessLevel.Perfect)
         {
             this.ProcessArrowPerfectHit(arrow);
-            comboCounter.incrementCombo();
+            //comboCounter.incrementCombo();
         }
         if (successLevel == HitZone.SuccessLevel.Good)
         {
             this.ProcessArrowGoodHit(arrow);
-            comboCounter.incrementCombo();
+            //comboCounter.incrementCombo();
         }
         if (successLevel == HitZone.SuccessLevel.Early || successLevel == HitZone.SuccessLevel.Late)
         {
@@ -172,7 +172,7 @@ public class HitZone : MonoBehaviour
     private void ProcessArrowMiss(GameObject arrow)
     {
         this.DeleteMissedArrow(arrow);
-        comboCounter.resetCombo();
+        //comboCounter.resetCombo();
     }
 
     private void DeleteHitArrow(GameObject arrowObject)
