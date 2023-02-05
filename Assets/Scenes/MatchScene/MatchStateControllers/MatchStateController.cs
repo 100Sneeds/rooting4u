@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.U2D.Animation;
 
 public class MatchStateController : MonoBehaviour
 {
@@ -22,6 +23,8 @@ public class MatchStateController : MonoBehaviour
     public Cheerleader cheerleaderOne;
     public Cheerleader cheerleaderTwo;
 
+    public OpponentRandomizer opponentRandomizer;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -36,6 +39,7 @@ public class MatchStateController : MonoBehaviour
             case MatchState.Setup:
                 setupPhase.Setup();
                 this.startingPlayerSlot = setupPhase.GetStartingPlayerSlot();
+                this.SetRandomOpponent();
                 // TODO delay for animations
                 this.currentMatchState = MatchState.FirstTurn;
                 break;
@@ -83,5 +87,12 @@ public class MatchStateController : MonoBehaviour
     public PlayerSlot GetStartingPlayerSlot()
     {
         return this.startingPlayerSlot;
+    }
+
+    private void SetRandomOpponent()
+    {
+        SpriteLibraryAsset randomSpriteLibraryAsset = opponentRandomizer.GetRandomSpriteLibraryAsset();
+        SpriteLibrary opponentSpriteLibrary = this.cheerleaderTwo.GetComponent<SpriteLibrary>();
+        opponentSpriteLibrary.spriteLibraryAsset = randomSpriteLibraryAsset;
     }
 }
