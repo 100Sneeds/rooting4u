@@ -19,10 +19,14 @@ public class HandCursor : MonoBehaviour
     public bool isAI;
     public float AIActionDelay = 0.5f;
 
+    public bool isActive;
+    public Stack<int> cardIndexStack;  // Stack of cards to select
+    private bool wasLastFrameActive;
+
     // Start is called before the first frame update
     void Start()
     {
-
+        cardIndexStack = new Stack<int>();
     }
 
     // Update is called once per frame
@@ -36,14 +40,44 @@ public class HandCursor : MonoBehaviour
     }
 
     private void AIUpdate() {
-        bool isActive = this.GetIsActive();
-        
-        AIActionDelay -= Time.deltaTime;
-        if (isActive && AIActionDelay < 0) {
-            this.hand.SelectCardAtIndex(this.cursorIndex);
+        isActive = this.GetIsActive();
+        // If the last frame was not active, we come up with a series of commands
+        if (!wasLastFrameActive){
+            cardIndexStack = new Stack<int>();
+            
+            List<int> indexList = new List<int> {0, 1, 2};
+            // Shuffle the list
+            for (int i = 0; i < indexList.Count - 1; i++)
+            {
+                int temp = indexList[i];
+                int rand = Random.Range(i, indexList.Count);
+                indexList[i] = indexList[rand];
+                indexList[rand] = temp;
+            }
 
-            AIActionDelay = 0.5f;
+            cardIndexStack.Push(indexList[0]);
+            cardIndexStack.Push(indexList[1]);
+            cardIndexStack.Push(indexList[2]);
+            Debug.Log("THE CARDS HAVE BEEN PUT INTO PLACE");
+
         }
+        Debug.Log(cardIndexStack.Count);
+        this.UpdatePosition();
+        if (isActive && cardIndexStack.Count != 0) {
+            AIActionDelay -= Time.deltaTime;
+            if(AIActionDelay < 0) {
+                int i = cardIndexStack.Pop();
+                // Move the hand to the right index
+                while (i != cursorIndex){
+                    this.MoveCursorIndexRight();
+                }
+
+                this.hand.SelectCardAtIndex(i);
+                AIActionDelay = 0.5f;
+                
+            }
+        }
+        wasLastFrameActive = isActive;
     }
 
     private void PlayerUpdate() {
