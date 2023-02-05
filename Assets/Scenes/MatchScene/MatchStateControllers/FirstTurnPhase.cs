@@ -21,7 +21,7 @@ public class FirstTurnPhase : MonoBehaviour
     {
         if (matchStateController.GetStartingPlayerSlot() == owner.playerSlot)
         {
-            if (Input.GetKeyDown(confirmCardSelectKey))
+            if (matchStateController.currentMatchState == MatchState.FirstTurn && Input.GetKeyDown(confirmCardSelectKey))
             {
                 this.ConfirmCardSelection();
             }
