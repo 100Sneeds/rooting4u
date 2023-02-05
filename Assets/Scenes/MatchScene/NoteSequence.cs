@@ -54,7 +54,7 @@ public class NoteSequence
         }
 
         bool isAllArrowsReachedHitZone = this.arrowObjects.TrueForAll((arrow) => {
-            return arrow.GetComponent<Arrow>().successState != Arrow.SuccessState.HasNotReachedHitZone;
+            return arrow.GetComponent<Arrow>().GetSuccessState() != Arrow.SuccessState.HasNotReachedHitZone;
         });
         if (isAllArrowsReachedHitZone)
         {
@@ -94,7 +94,7 @@ public class NoteSequence
         foreach (GameObject arrowObject in this.arrowObjects)
         {
             Arrow arrow = arrowObject.GetComponent<Arrow>();
-            if (arrow.successState == Arrow.SuccessState.Hit)
+            if (arrow.GetSuccessState() == Arrow.SuccessState.Hit)
             {
                 hitArrows++;
             }
