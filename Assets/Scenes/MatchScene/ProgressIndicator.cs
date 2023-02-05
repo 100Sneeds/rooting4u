@@ -25,7 +25,7 @@ public class ProgressIndicator : MonoBehaviour
     private Vector3 GetPosition()
     {
         float originalX = originalPosition.x;
-        float newX = originalX + progressBar.score * X_OFFSET_PER_POINT;
+        float newX = originalX + progressBar.GetScore() * X_OFFSET_PER_POINT;
         return new Vector3(newX, originalPosition.y, originalPosition.z);
     }
 }

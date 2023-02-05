@@ -41,6 +41,8 @@ public class MatchStateController : MonoBehaviour
                 // run player one perform
                 break;
             case MatchState.PlayerTwoPerformInit:
+                performancePhaseTwo.PerformancePhaseInit();
+                this.currentMatchState = MatchState.PlayerTwoPerform;
                 break;
             case MatchState.PlayerTwoPerform:
                 // run player two perform

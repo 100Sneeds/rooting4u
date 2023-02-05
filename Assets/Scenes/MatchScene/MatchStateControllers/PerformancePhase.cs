@@ -142,6 +142,7 @@ public class PerformancePhase : MonoBehaviour
             preparingPlayer.hand.RemoveCard(selectedCard);
         }
         defenseZone.AddAllCards(selectedCards.ToArray());
+        preparingPlayer.hand.ClearSelection();
         preparingPlayer.DrawCardsUntilHandFull();
     }
 
@@ -165,13 +166,13 @@ public class PerformancePhase : MonoBehaviour
             PlayerSlot.PlayerOne :
             PlayerSlot.PlayerTwo;
 
-        if (playerTakingDamage == PlayerSlot.PlayerOne)
+        if (playerTakingDamage == PlayerSlot.PlayerTwo)
         {
-            this.progressBar.score += damage;
+            this.progressBar.IncrementScore(damage);
         }
         else
         {
-            this.progressBar.score -= damage;
+            this.progressBar.DecrementScore(damage);
         }
     }
 

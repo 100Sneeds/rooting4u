@@ -858,6 +858,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   activationKey: 276
+  isAI: 0
+  difficultyAI: 0
+  comboCounter: {fileID: 0}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -1025,6 +1028,57 @@ Transform:
   m_Father: {fileID: 1090984517}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &554093901
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 554093902}
+  - component: {fileID: 554093903}
+  m_Layer: 0
+  m_Name: PerformancePhaseTwo
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &554093902
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 554093901}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1090984517}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &554093903
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 554093901}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 198e69d895232d141841c3328853f01e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  matchStateController: {fileID: 1247922125}
+  performingPlayer: {fileID: 345148557}
+  preparingPlayer: {fileID: 1463671482}
+  arrowSpawner: {fileID: 975628390}
+  attackZone: {fileID: 1175102571}
+  defenseZone: {fileID: 1315044979}
+  progressBar: {fileID: 1214842650}
 --- !u!1 &619394800
 GameObject:
   m_ObjectHideFlags: 0
@@ -1146,6 +1200,7 @@ GameObject:
   m_Component:
   - component: {fileID: 691851839}
   - component: {fileID: 691851840}
+  - component: {fileID: 691851841}
   m_Layer: 0
   m_Name: HitZoneRightTwo
   m_TagString: Untagged
@@ -1220,6 +1275,22 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &691851841
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 691851838}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d94b3e299cb63224c8950af7f2343116, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  activationKey: 0
+  isAI: 1
+  difficultyAI: 0
+  comboCounter: {fileID: 0}
 --- !u!1 &833817804
 GameObject:
   m_ObjectHideFlags: 0
@@ -1318,6 +1389,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   activationKey: 273
+  isAI: 0
+  difficultyAI: 0
+  comboCounter: {fileID: 0}
 --- !u!1 &861091782
 GameObject:
   m_ObjectHideFlags: 0
@@ -1395,7 +1469,7 @@ Transform:
   m_GameObject: {fileID: 871296355}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
+  m_LocalScale: {x: 0.25, y: 0.25, z: 0.25}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
@@ -1483,6 +1557,7 @@ GameObject:
   m_Component:
   - component: {fileID: 919466871}
   - component: {fileID: 919466872}
+  - component: {fileID: 919466873}
   m_Layer: 0
   m_Name: HitZoneDownTwo
   m_TagString: Untagged
@@ -1557,6 +1632,22 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &919466873
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 919466870}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d94b3e299cb63224c8950af7f2343116, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  activationKey: 0
+  isAI: 1
+  difficultyAI: 0
+  comboCounter: {fileID: 0}
 --- !u!1 &975628388
 GameObject:
   m_ObjectHideFlags: 0
@@ -1566,6 +1657,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 975628389}
+  - component: {fileID: 975628390}
   m_Layer: 0
   m_Name: ArrowSpawnerTwo
   m_TagString: Untagged
@@ -1581,13 +1673,34 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 975628388}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -9.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1593095741}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &975628390
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 975628388}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3142b2f81adc2954daece8dfbcd030b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  leftHitZone: {fileID: 1000687619}
+  downHitZone: {fileID: 919466870}
+  upHitZone: {fileID: 1307834786}
+  rightHitZone: {fileID: 691851838}
+  leftArrow: {fileID: 274679189161620341, guid: 1621513db93642a41adcc99b6c06cdf4, type: 3}
+  downArrow: {fileID: 586503874834196873, guid: 970ea0d6ab0c6ce46b05faf4b262dacb, type: 3}
+  upArrow: {fileID: 1322195084202212837, guid: c859372328f935643910b9acb6b7b4be, type: 3}
+  rightArrow: {fileID: 5173814932110683718, guid: 1bd0a62473d018c44919f9a0248f9c9d, type: 3}
+  performancePhase: {fileID: 554093903}
 --- !u!1 &987343117
 GameObject:
   m_ObjectHideFlags: 0
@@ -1648,6 +1761,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1000687620}
   - component: {fileID: 1000687621}
+  - component: {fileID: 1000687622}
   m_Layer: 0
   m_Name: HitZoneLeftTwo
   m_TagString: Untagged
@@ -1722,6 +1836,22 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1000687622
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1000687619}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d94b3e299cb63224c8950af7f2343116, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  activationKey: 0
+  isAI: 1
+  difficultyAI: 0
+  comboCounter: {fileID: 0}
 --- !u!1 &1062407994
 GameObject:
   m_ObjectHideFlags: 0
@@ -1853,6 +1983,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   activationKey: 275
+  isAI: 0
+  difficultyAI: 0
+  comboCounter: {fileID: 0}
 --- !u!1 &1090984516
 GameObject:
   m_ObjectHideFlags: 0
@@ -1885,6 +2018,7 @@ Transform:
   - {fileID: 527639708}
   - {fileID: 1955167876}
   - {fileID: 152685752}
+  - {fileID: 554093902}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2207,7 +2341,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c864709341142fc40b75ff3d5fc664c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  score: 0
 --- !u!4 &1214842651
 Transform:
   m_ObjectHideFlags: 0
@@ -2256,7 +2389,7 @@ MonoBehaviour:
   currentMatchState: 0
   setupPhase: {fileID: 527639707}
   performancePhaseOne: {fileID: 152685753}
-  performancePhaseTwo: {fileID: 0}
+  performancePhaseTwo: {fileID: 554093903}
 --- !u!4 &1247922126
 Transform:
   m_ObjectHideFlags: 0
@@ -2366,6 +2499,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1307834787}
   - component: {fileID: 1307834788}
+  - component: {fileID: 1307834789}
   m_Layer: 0
   m_Name: HitZoneUpTwo
   m_TagString: Untagged
@@ -2440,6 +2574,22 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1307834789
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1307834786}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d94b3e299cb63224c8950af7f2343116, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  activationKey: 0
+  isAI: 1
+  difficultyAI: 0
+  comboCounter: {fileID: 0}
 --- !u!1 &1315044977
 GameObject:
   m_ObjectHideFlags: 0
@@ -2588,6 +2738,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   activationKey: 274
+  isAI: 0
+  difficultyAI: 0
+  comboCounter: {fileID: 0}
 --- !u!1 &1400021738
 GameObject:
   m_ObjectHideFlags: 0
@@ -3075,7 +3228,7 @@ Transform:
   m_GameObject: {fileID: 1766048524}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
+  m_LocalScale: {x: 0.25, y: 0.25, z: 0.25}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
