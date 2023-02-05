@@ -25,6 +25,9 @@ public class MatchStateController : MonoBehaviour
 
     public OpponentRandomizer opponentRandomizer;
 
+    public FootballPlayerSprite footballPlayerLeft;
+    public FootballPlayerSprite footballPlayerRight;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -39,6 +42,7 @@ public class MatchStateController : MonoBehaviour
             case MatchState.Setup:
                 setupPhase.Setup();
                 this.startingPlayerSlot = setupPhase.GetStartingPlayerSlot();
+                this.SetPlayerColor();
                 this.SetRandomOpponent();
                 // TODO delay for animations
                 this.currentMatchState = MatchState.FirstTurn;
@@ -89,10 +93,19 @@ public class MatchStateController : MonoBehaviour
         return this.startingPlayerSlot;
     }
 
+    private void SetPlayerColor()
+    {
+        OpponentSkinData playerSkinData = opponentRandomizer.GetSkinData(OpponentSkin.Blue);
+        footballPlayerLeft.SetColor(playerSkinData.GetColor());
+    }
+
     private void SetRandomOpponent()
     {
-        SpriteLibraryAsset randomSpriteLibraryAsset = opponentRandomizer.GetRandomSpriteLibraryAsset();
+        OpponentSkin randomOpponentSkin = opponentRandomizer.GetRandomOpponentSkin();
+        OpponentSkinData opponentSkinData = opponentRandomizer.GetSkinData(randomOpponentSkin);
+        SpriteLibraryAsset randomSpriteLibraryAsset = opponentSkinData.GetSpriteLibraryAsset();
         SpriteLibrary opponentSpriteLibrary = this.cheerleaderTwo.GetComponent<SpriteLibrary>();
         opponentSpriteLibrary.spriteLibraryAsset = randomSpriteLibraryAsset;
+        footballPlayerRight.SetColor(opponentSkinData.GetColor());
     }
 }
