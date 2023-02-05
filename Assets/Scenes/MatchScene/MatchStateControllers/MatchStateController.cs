@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class MatchStateController : MonoBehaviour
 {
@@ -11,12 +12,18 @@ public class MatchStateController : MonoBehaviour
     public PerformancePhase performancePhaseOne;
     public PerformancePhase performancePhaseTwo;
 
+    public ResultsWin resultsWin;
+    public ResultsLoss resultsLoss;
+
     private PlayerSlot startingPlayerSlot;
+    public PlayerSlot winningPlayerSlot = PlayerSlot.PlayerOne;
+    public KeyCode playAgainKey;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        this.resultsWin.gameObject.SetActive(false);
+        this.resultsLoss.gameObject.SetActive(false);
     }
 
     // Update is called once per frame
@@ -26,7 +33,7 @@ public class MatchStateController : MonoBehaviour
             case MatchState.Setup:
                 setupPhase.Setup();
                 this.startingPlayerSlot = setupPhase.GetStartingPlayerSlot();
-                // delay for animations
+                // TODO delay for animations
                 this.currentMatchState = MatchState.FirstTurn;
                 break;
             case MatchState.FirstTurn:
@@ -39,6 +46,7 @@ public class MatchStateController : MonoBehaviour
                 break;
             case MatchState.PlayerOnePerform:
                 // run player one perform
+                // handled by performance phase objects
                 break;
             case MatchState.PlayerTwoPerformInit:
                 performancePhaseTwo.PerformancePhaseInit();
@@ -46,9 +54,21 @@ public class MatchStateController : MonoBehaviour
                 break;
             case MatchState.PlayerTwoPerform:
                 // run player two perform
+                // handled by performance phase objects
                 break;
             case MatchState.GameEnd:
-                // run game end
+                if (winningPlayerSlot == PlayerSlot.PlayerOne)
+                {
+                    this.resultsWin.gameObject.SetActive(true);
+                }
+                else
+                {
+                    this.resultsLoss.gameObject.SetActive(true);
+                }
+                if (Input.GetKeyDown(this.playAgainKey))
+                {
+                    SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+                }
                 break;
         }
     }

@@ -131,6 +131,7 @@ public class PerformancePhase : MonoBehaviour
             if (affordableCards.Count == 0)
             {
                 this.matchStateController.currentMatchState = MatchState.GameEnd;
+                this.matchStateController.winningPlayerSlot = performingPlayer.playerSlot;
                 return;
             }
             selectedCards = new List<GameObject>();
@@ -150,6 +151,7 @@ public class PerformancePhase : MonoBehaviour
     {
         if (this.progressBar.IsGameWonByScore())
         {
+            this.matchStateController.winningPlayerSlot = preparingPlayer.playerSlot;
             return MatchState.GameEnd;
         }
         if (this.performingPlayer.playerSlot == PlayerSlot.PlayerOne)

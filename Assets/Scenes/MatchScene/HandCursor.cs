@@ -16,6 +16,9 @@ public class HandCursor : MonoBehaviour
 
     private int cursorIndex = 0;
 
+    public bool isAI;
+    public float AIActionDelay = 0.5f;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -25,6 +28,25 @@ public class HandCursor : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (isAI) {
+            AIUpdate();
+        } else {
+            PlayerUpdate();
+        }
+    }
+
+    private void AIUpdate() {
+        bool isActive = this.GetIsActive();
+        
+        AIActionDelay -= Time.deltaTime;
+        if (isActive && AIActionDelay < 0) {
+            this.hand.SelectCardAtIndex(this.cursorIndex);
+
+            AIActionDelay = 0.5f;
+        }
+    }
+
+    private void PlayerUpdate() {
         bool isActive = this.GetIsActive();
 
         if (isActive)
