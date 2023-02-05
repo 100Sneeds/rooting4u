@@ -16,7 +16,7 @@ public class TitleScreenController : MonoBehaviour
     {
         if (Input.anyKeyDown)
         {
-            SceneManager.LoadScene("MatchScene", LoadSceneMode.Single);
+            SceneManager.LoadScene("Tutorial", LoadSceneMode.Single);
         }
     }
 }

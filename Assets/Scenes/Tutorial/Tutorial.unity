@@ -123,6 +123,60 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &496818878
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 496818880}
+  - component: {fileID: 496818879}
+  m_Layer: 0
+  m_Name: Slideshow
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &496818879
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 496818878}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0892f75649758cf478d1aab536e0840d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  imageArray:
+  - {fileID: 2800000, guid: 30c303a09d8e5b3449b06b6a99f9f56e, type: 3}
+  - {fileID: 2800000, guid: a9ee58212f690d442bc59777b0c10573, type: 3}
+  - {fileID: 2800000, guid: 5cce0b4d7570793429396236c03baca4, type: 3}
+  - {fileID: 2800000, guid: 6bc3056945a93084cbd0ec897bf3b503, type: 3}
+  - {fileID: 2800000, guid: 1f8a0033e1ed7e542ba0d758bf911979, type: 3}
+  - {fileID: 2800000, guid: 568bd4df5e32d904c87dddd29eead0f7, type: 3}
+  - {fileID: 2800000, guid: e31cf57e42bf6c4438ba8a830965f98f, type: 3}
+  - {fileID: 2800000, guid: a54ced384bed8e446ac46f07e98b1056, type: 3}
+  currentImage: 0
+--- !u!4 &496818880
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 496818878}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.9665739, y: 0.6846802, z: 0.0339839}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1077192773
 GameObject:
   m_ObjectHideFlags: 0
