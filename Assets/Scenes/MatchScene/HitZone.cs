@@ -184,8 +184,7 @@ public class HitZone : MonoBehaviour
     private void DeleteHitArrow(GameObject arrowObject)
     {
         Arrow arrow = arrowObject.GetComponent<Arrow>();
-        arrow.successState = Arrow.SuccessState.Hit;
-        this.HideArrowSprite(arrowObject);
+        arrow.SetSuccessState(Arrow.SuccessState.Hit);
         this.arrowQueue.Dequeue();
         if (this.arrowQueue.Count > 0)
         {
@@ -200,8 +199,7 @@ public class HitZone : MonoBehaviour
     private void DeleteMissedArrow(GameObject arrowObject)
     {
         Arrow arrow = arrowObject.GetComponent<Arrow>();
-        arrow.successState = Arrow.SuccessState.Miss;
-        this.DarkenArrowSprite(arrowObject);
+        arrow.SetSuccessState(Arrow.SuccessState.Miss);
         this.arrowQueue.Dequeue();
         if (this.arrowQueue.Count > 0)
         {
@@ -211,24 +209,6 @@ public class HitZone : MonoBehaviour
         {
             this.currentArrow = null;
         }
-    }
-
-    private void DarkenArrowSprite(GameObject arrow)
-    {
-        SpriteRenderer spriteRenderer = arrow.GetComponent<SpriteRenderer>();
-        Color color = spriteRenderer.color;
-        color.r -= 0.5f;
-        color.g -= 0.5f;
-        color.b -= 0.5f;
-        spriteRenderer.color = color;
-    }
-
-    private void HideArrowSprite(GameObject arrow)
-    {
-        SpriteRenderer spriteRenderer = arrow.GetComponent<SpriteRenderer>();
-        Color color = spriteRenderer.color;
-        color.a = 0;
-        spriteRenderer.color = color;
     }
 
     private bool IsArrowPastHitZone(GameObject arrow)
