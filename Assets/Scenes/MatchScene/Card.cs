@@ -12,6 +12,8 @@ public class Card : MonoBehaviour
         PerformanceBoosted,
     }
 
+    public static float DEFAULT_POSITION_LERP_DURATION_SECONDS = 0.5f;
+
     public int attackValue;
     public CardColor attackColor;
     public int defenseValue;
@@ -29,12 +31,21 @@ public class Card : MonoBehaviour
     private static Color32 BOOSTED_OUTLINE_COLOR = Color.green;
     private static Color32 PENALIZED_OUTLINE_COLOR = Color.red;
 
+    private Vector3 sourceVector;
+    private Vector3 destinationVector;
+    private float lerpTimer = 0;
+    private float lerpDurationSeconds = DEFAULT_POSITION_LERP_DURATION_SECONDS;
+
     // Start is called before the first frame update
     void Start()
     {
         staminaCostText.text = this.staminaCost.ToString();
         this.ShowAttackColor(this.attackColor);
         this.ShowDefenseColor(this.defenseColor);
+
+        Vector3 originalPosition = this.transform.position;
+        sourceVector = originalPosition;
+        destinationVector = originalPosition;
     }
 
     // Update is called once per frame
@@ -59,6 +70,25 @@ public class Card : MonoBehaviour
         }
         attackValueText.outlineWidth = 0.2f;
         defenseValueText.outlineWidth = 0.2f;
+
+        lerpTimer += Time.deltaTime;
+        float lerpPercent = lerpTimer / lerpDurationSeconds;
+        this.transform.position = Vector3.Lerp(sourceVector, destinationVector, lerpPercent);
+    }
+
+    public void SetDestinationPosition(Vector3 destination, float lerpDurationSeconds)
+    {
+        if (
+            this.destinationVector.x != destination.x ||
+            this.destinationVector.y != destination.y ||
+            this.destinationVector.z != destination.z
+        )
+        {
+            sourceVector = this.transform.position;
+            destinationVector = destination;
+            lerpTimer = 0;
+            this.lerpDurationSeconds = lerpDurationSeconds;
+        }
     }
 
     public int GetModifiedAttackValue()

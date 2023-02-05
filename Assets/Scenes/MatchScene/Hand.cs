@@ -111,7 +111,8 @@ public class Hand : CardZone
             float cardPositionOffsetY = isSelectedIndex ? SELECTED_CARD_Y_OFFSET : 0f;
             float cardPositionY = this.transform.position.y + cardPositionOffsetY;
 
-            cardObject.transform.position = new Vector3(nextPositionX, cardPositionY, 0);
+            Card card = cardObject.GetComponent<Card>();
+            card.SetDestinationPosition(new Vector3(nextPositionX, cardPositionY, 0), 0.1f);
 
             float markerPositionY = this.GetCardObjectTop(cardObject);
             marker.transform.position = new Vector3(nextPositionX, markerPositionY, 0);

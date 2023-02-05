@@ -171,7 +171,8 @@ public class CardZone : MonoBehaviour
         Vector3 nextPosition = this.transform.position;
         foreach (GameObject cardObject in cardObjects)
         {
-            cardObject.transform.position = nextPosition;
+            Card card = cardObject.GetComponent<Card>();
+            card.SetDestinationPosition(nextPosition, 0.5f);
             cardObject.transform.localScale = new Vector3(renderedCardScale, renderedCardScale, renderedCardScale);
             float width = this.GetCardObjectWidth(cardObject);
             nextPosition += new Vector3(width, 0, 0);
