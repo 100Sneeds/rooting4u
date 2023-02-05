@@ -5,24 +5,40 @@ using UnityEngine;
 public class PlayerAI
 {
 
-    public int difficulty; // 0 to 99
+    public int difficulty; // 0 to 10
+    private static int MAX_DIFF = 1;
 
-    private static int DEFAULT_PERFECT_RNG = 950;
-    private static int DEFAULT_GOOD_HIT_RNG = 800;
-    private static int DEFAULT_EARLY_MISS_RNG = 700;
-    private static int DEFAULT_LATE_MISS_RNG = 1200;
+    private static int PERFECT_RNG = 600;
+    private static int GOOD_HIT_RNG = 700;
 
-    public float nextHitTiming = -0.0f;
-    private float lastHitTiming = 0.1f;
+    public float nextHitTiming = 0.0f;
+
+    private int baseProbability = 500;
 
     public PlayerAI(int difficulty){
         this.difficulty = difficulty;
     }
 
     public void generateNextHitTiming(int combo){
-        int hitRNG = Random.Range(0, 1000);
-        //if (hitRNG < ){}
-
-        nextHitTiming = 0.5f;
+        Debug.Log("Incoming Combo: "+ combo);
+        Debug.Log("diff modifier: "+ Mathf.Floor(combo / 2) * (2 * difficulty + 1));
+        int currentProbability = baseProbability + (int)(Mathf.Floor(combo / 2) * (2 * difficulty + 1));
+        int hitRNG = Random.Range(0, currentProbability);
+        // Perfect hit
+        if (hitRNG < PERFECT_RNG){
+            // get timing window that will result in perfect hit
+            nextHitTiming = 0.0f;
+        }
+        // Good Hit
+        else if (hitRNG < GOOD_HIT_RNG){
+            // decide whether it's early or late
+            nextHitTiming = 0.3f;
+        }
+        // Miss
+        else{
+            // Decide whether it's early or late
+            nextHitTiming = - 1f;
+            Debug.Log("MISS");
+        }
     }
 }

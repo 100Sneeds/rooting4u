@@ -29,10 +29,12 @@ public class HitZone : MonoBehaviour
     // AI player related Stuff
     public bool isAI;
     public PlayerAI playerAI;
-
+    public int difficultyAI;
     private Queue<GameObject> arrowQueue = new Queue<GameObject>();
     private GameObject currentArrow;
     private GameObject lastArrow;
+    public ComboCounter comboCounter;
+    
 
     // Start is called before the first frame update
     void Start()
@@ -44,8 +46,7 @@ public class HitZone : MonoBehaviour
             initialScale.y * HitZone.PRESSED_SPRITE_SCALING_FACTOR,
             initialScale.z * HitZone.PRESSED_SPRITE_SCALING_FACTOR
         );
-        this.isAI = true;
-        playerAI = new PlayerAI(difficulty: 0);
+        playerAI = new PlayerAI(difficulty: difficultyAI);
     }
 
     // Update is called once per frame
@@ -56,30 +57,24 @@ public class HitZone : MonoBehaviour
         } else {
             PlayerUpdate();
         }
+        
     }
     void AIUpdate() {
+        this.transform.localScale = initialScale;
         // handle when note goes beyond the hit zone
         if (this.currentArrow != null && this.IsArrowPastHitZone(this.currentArrow)) {
             this.ProcessArrowMiss(this.currentArrow);
         }
 
         if (this.currentArrow != null) {
-
-            float noteY = currentArrow.transform.position.y;
-            float hitZoneY = this.transform.position.y;
-            float noteDistance = hitZoneY - noteY;
-            Debug.Log("NoteDistance: "+noteDistance+" NextHitTiming: "+this.playerAI.nextHitTiming);
+            float noteDistance = this.transform.position.y - currentArrow.transform.position.y;
             if(noteDistance <= this.playerAI.nextHitTiming){
-                // get arrow success level
-                Debug.Log("I'M HITTING THE ARROW NOW FATHER PLEASE I CRAVE CHEDDAR");
-
                 this.ProcessArrowActivation(this.currentArrow);
-
-
+                this.transform.localScale = pressedScale;
                 // generate next note hit timing
-                //this.playerAI.generateNextHitTiming(combo: 10);
+                this.playerAI.generateNextHitTiming(combo: comboCounter.combo);
             }
-        }  
+        }
     }
 
     void PlayerUpdate(){
@@ -120,10 +115,12 @@ public class HitZone : MonoBehaviour
         if (successLevel == HitZone.SuccessLevel.Perfect)
         {
             this.ProcessArrowPerfectHit(arrow);
+            comboCounter.incrementCombo();
         }
         if (successLevel == HitZone.SuccessLevel.Good)
         {
             this.ProcessArrowGoodHit(arrow);
+            comboCounter.incrementCombo();
         }
         if (successLevel == HitZone.SuccessLevel.Early || successLevel == HitZone.SuccessLevel.Late)
         {
@@ -175,6 +172,7 @@ public class HitZone : MonoBehaviour
     private void ProcessArrowMiss(GameObject arrow)
     {
         this.DeleteMissedArrow(arrow);
+        comboCounter.resetCombo();
     }
 
     private void DeleteHitArrow(GameObject arrowObject)
