@@ -19,6 +19,9 @@ public class MatchStateController : MonoBehaviour
     public PlayerSlot winningPlayerSlot = PlayerSlot.PlayerOne;
     public KeyCode playAgainKey;
 
+    public Cheerleader cheerleaderOne;
+    public Cheerleader cheerleaderTwo;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -42,6 +45,8 @@ public class MatchStateController : MonoBehaviour
                 break;
             case MatchState.PlayerOnePerformInit:
                 performancePhaseOne.PerformancePhaseInit();
+                cheerleaderOne.pose = Cheerleader.Pose.Cheering;
+                cheerleaderTwo.pose = Cheerleader.Pose.Thinking;
                 this.currentMatchState = MatchState.PlayerOnePerform;
                 break;
             case MatchState.PlayerOnePerform:
@@ -50,6 +55,8 @@ public class MatchStateController : MonoBehaviour
                 break;
             case MatchState.PlayerTwoPerformInit:
                 performancePhaseTwo.PerformancePhaseInit();
+                cheerleaderTwo.pose = Cheerleader.Pose.Cheering;
+                cheerleaderOne.pose = Cheerleader.Pose.Thinking;
                 this.currentMatchState = MatchState.PlayerTwoPerform;
                 break;
             case MatchState.PlayerTwoPerform:

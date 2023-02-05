@@ -1080,6 +1080,17 @@ MonoBehaviour:
   renderedCardScale: 0
   hasMaximumCardLimit: 0
   maximumNumberOfCards: 0
+--- !u!114 &367955346 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1295451634125705068, guid: 887886fa73e9a414ca2c8f10f0324340, type: 3}
+  m_PrefabInstance: {fileID: 500104136638413442}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e09a422bc706015458c8d22d94933d79, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &407932529
 GameObject:
   m_ObjectHideFlags: 0
@@ -1482,6 +1493,17 @@ MonoBehaviour:
   attackZone: {fileID: 1175102571}
   defenseZone: {fileID: 1315044979}
   progressBar: {fileID: 1214842650}
+--- !u!114 &615073193 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1295451634125705068, guid: 887886fa73e9a414ca2c8f10f0324340, type: 3}
+  m_PrefabInstance: {fileID: 1205399014}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e09a422bc706015458c8d22d94933d79, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &618717674
 GameObject:
   m_ObjectHideFlags: 0
@@ -3486,6 +3508,8 @@ MonoBehaviour:
   resultsLoss: {fileID: 714817499}
   winningPlayerSlot: 0
   playAgainKey: 13
+  cheerleaderOne: {fileID: 367955346}
+  cheerleaderTwo: {fileID: 615073193}
 --- !u!4 &1247922126
 Transform:
   m_ObjectHideFlags: 0
