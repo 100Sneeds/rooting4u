@@ -115,12 +115,12 @@ public class HitZone : MonoBehaviour
         if (successLevel == HitZone.SuccessLevel.Perfect)
         {
             this.ProcessArrowPerfectHit(arrow);
-            //comboCounter.incrementCombo();
+            comboCounter.incrementCombo();
         }
         if (successLevel == HitZone.SuccessLevel.Good)
         {
             this.ProcessArrowGoodHit(arrow);
-            //comboCounter.incrementCombo();
+            comboCounter.incrementCombo();
         }
         if (successLevel == HitZone.SuccessLevel.Early || successLevel == HitZone.SuccessLevel.Late)
         {
@@ -176,7 +176,7 @@ public class HitZone : MonoBehaviour
     {
         this.DeleteMissedArrow(arrow);
         this.arrowSuccessIndicator.ShowArrowSuccessResult(SuccessLevel.Late);
-        //comboCounter.resetCombo();
+        comboCounter.resetCombo();
     }
 
     private void DeleteHitArrow(GameObject arrowObject)
