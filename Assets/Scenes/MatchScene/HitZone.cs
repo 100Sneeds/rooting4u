@@ -26,23 +26,58 @@ public class HitZone : MonoBehaviour
     private Vector3 initialScale;
     private Vector3 pressedScale;
 
+    // AI player related Stuff
+    public bool isAI;
+    public PlayerAI playerAI;
+    public int difficultyAI;
     private Queue<GameObject> arrowQueue = new Queue<GameObject>();
     private GameObject currentArrow;
+    private GameObject lastArrow;
+    public ComboCounter comboCounter;
+    
 
     // Start is called before the first frame update
     void Start()
     {
+        
         initialScale = this.transform.localScale;
         pressedScale = new Vector3(
             initialScale.x * HitZone.PRESSED_SPRITE_SCALING_FACTOR,
             initialScale.y * HitZone.PRESSED_SPRITE_SCALING_FACTOR,
             initialScale.z * HitZone.PRESSED_SPRITE_SCALING_FACTOR
         );
+        playerAI = new PlayerAI(difficulty: difficultyAI);
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (isAI) {
+            AIUpdate();
+        } else {
+            PlayerUpdate();
+        }
+        
+    }
+    void AIUpdate() {
+        this.transform.localScale = initialScale;
+        // handle when note goes beyond the hit zone
+        if (this.currentArrow != null && this.IsArrowPastHitZone(this.currentArrow)) {
+            this.ProcessArrowMiss(this.currentArrow);
+        }
+
+        if (this.currentArrow != null) {
+            float noteDistance = this.transform.position.y - currentArrow.transform.position.y;
+            if(noteDistance <= this.playerAI.nextHitTiming){
+                this.ProcessArrowActivation(this.currentArrow);
+                this.transform.localScale = pressedScale;
+                // generate next note hit timing
+                this.playerAI.generateNextHitTiming(combo: comboCounter.combo);
+            }
+        }
+    }
+
+    void PlayerUpdate(){
         if (this.currentArrow != null && this.IsArrowPastHitZone(this.currentArrow))
         {
             this.ProcessArrowMiss(this.currentArrow);
@@ -80,10 +115,12 @@ public class HitZone : MonoBehaviour
         if (successLevel == HitZone.SuccessLevel.Perfect)
         {
             this.ProcessArrowPerfectHit(arrow);
+            comboCounter.incrementCombo();
         }
         if (successLevel == HitZone.SuccessLevel.Good)
         {
             this.ProcessArrowGoodHit(arrow);
+            comboCounter.incrementCombo();
         }
         if (successLevel == HitZone.SuccessLevel.Early || successLevel == HitZone.SuccessLevel.Late)
         {
@@ -135,6 +172,7 @@ public class HitZone : MonoBehaviour
     private void ProcessArrowMiss(GameObject arrow)
     {
         this.DeleteMissedArrow(arrow);
+        comboCounter.resetCombo();
     }
 
     private void DeleteHitArrow(GameObject arrowObject)
