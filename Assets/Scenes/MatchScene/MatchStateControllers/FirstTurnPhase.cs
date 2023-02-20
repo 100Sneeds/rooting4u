@@ -23,7 +23,10 @@ public class FirstTurnPhase : MonoBehaviour
     {
         if (matchStateController.GetStartingPlayerSlot() == owner.playerSlot)
         {
-            if (matchStateController.currentMatchState == MatchState.FirstTurn && (Input.GetKeyDown(confirmCardSelectKey) || aiCursor.isAiCursorSelectionDone))
+            bool isAiDoneSelectingCards = aiCursor != null && aiCursor.isAiCursorSelectionDone;
+            bool isHumanDoneSelectingCards = confirmCardSelectKey != KeyCode.None && Input.GetKeyDown(confirmCardSelectKey);
+
+            if (matchStateController.currentMatchState == MatchState.FirstTurn && (isAiDoneSelectingCards || isHumanDoneSelectingCards))
             {
                 this.ConfirmCardSelection();
             }

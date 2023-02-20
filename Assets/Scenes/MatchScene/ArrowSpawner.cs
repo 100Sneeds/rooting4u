@@ -25,6 +25,14 @@ public class ArrowSpawner : MonoBehaviour
     private static float WHOLE_NOTES_PER_SECOND = ArrowSpawner.BEATS_PER_MINUTE * ArrowSpawner.WHOLE_NOTES_PER_BEAT / ArrowSpawner.SECONDS_PER_MINUTE;
     private static float SHORTEST_NOTE_DURATION = ArrowSpawner.GetNoteDurationInSeconds(NoteDuration.Sixteenth);
 
+    private static float BEATS_FROM_SPAWN_TO_HITZONE = 8;
+    private static float SECONDS_PER_BEAT = ArrowSpawner.GetNoteDurationInSeconds(NoteDuration.Quarter);
+    private static float SECONDS_TO_HITZONE = SECONDS_PER_BEAT * BEATS_FROM_SPAWN_TO_HITZONE;
+    private static float HITZONE_Y = 3.6f - 0.25f;
+    private static float SPAWNER_Y = -9.5f;
+    private static float DISTANCE_TO_HITZONE = Mathf.Abs(SPAWNER_Y - HITZONE_Y);
+    public static float RHYTHM_BOARD_SPEED = DISTANCE_TO_HITZONE / SECONDS_TO_HITZONE;
+
     private float leftArrowSpawnX;
     private float downArrowSpawnX;
     private float upArrowSpawnX;
@@ -32,11 +40,18 @@ public class ArrowSpawner : MonoBehaviour
 
     private float spawnY;
 
-    private float timerSeconds = 0f;
+    private float noteTimerSeconds = 0f;
     private float delayToNextNoteSeconds = 0f;
 
     private float beatTimerSeconds = 0f;
-    private float delayToNextBeatSeconds = ArrowSpawner.GetNoteDurationInSeconds(NoteDuration.Whole);
+    private float delayToNextBeatSeconds = ArrowSpawner.GetNoteDurationInSeconds(NoteDuration.Quarter);
+
+    private float measureTimerSeconds = 0f;
+    private float delayToNextMeasureSeconds = ArrowSpawner.GetNoteDurationInSeconds(NoteDuration.Quarter) * BEATS_FROM_SPAWN_TO_HITZONE / 4;
+
+    private int measureCounter = 0;
+    private int measuresPerBackingTrackLoop = 4;
+    private int backingTrackLoopPhaseShift = 3;
 
     private NoteSequence currentSequence;
     private Queue<Note> currentSequenceNotes;
@@ -57,40 +72,48 @@ public class ArrowSpawner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        this.timerSeconds += Time.deltaTime;
-        this.beatTimerSeconds += Time.deltaTime;
+        this.noteTimerSeconds += Time.deltaTime;
+        this.beatTimerSeconds += Time.deltaTime; // Every quarter note
+        this.measureTimerSeconds += Time.deltaTime; // Every measure
+
         if (this.beatTimerSeconds >= this.delayToNextBeatSeconds)
         {
             this.beatTimerSeconds -= this.delayToNextBeatSeconds;
             this.SpawnBeatMarker();
+        }
 
+        if (this.measureTimerSeconds >= this.delayToNextMeasureSeconds)
+        {
+            this.measureTimerSeconds -= this.delayToNextMeasureSeconds;
+            this.delayToNextMeasureSeconds = ArrowSpawner.GetNoteDurationInSeconds(NoteDuration.Whole);
+            this.SpawnMeasureMarker();
+            this.measureCounter++;
+        }
+
+        if (this.measureCounter % this.measuresPerBackingTrackLoop == this.backingTrackLoopPhaseShift)
+        {
+            this.measureCounter -= this.measuresPerBackingTrackLoop;
             if (this.currentSequenceNotes == null || this.currentSequenceNotes.Count == 0)
             {
                 if (sequenceSpawnQueue.Count > 0)
                 {
                     this.SetCurrentNoteSequence(sequenceSpawnQueue.Dequeue());
+                    this.noteTimerSeconds = 0f;
                     this.delayToNextNoteSeconds = 0f;
-                }
-                else
-                {
-                    this.delayToNextNoteSeconds = GetNoteDurationInSeconds(NoteDuration.Quarter);
                 }
             }
         }
 
-        if (this.timerSeconds >= this.delayToNextNoteSeconds)
+        if (this.noteTimerSeconds >= this.delayToNextNoteSeconds)
         {
-            this.timerSeconds -= this.delayToNextNoteSeconds;
-            if (this.currentSequenceNotes == null || this.currentSequenceNotes.Count == 0)
-            {
-
-            }
-            else
+            this.noteTimerSeconds -= this.delayToNextNoteSeconds;
+            if (this.currentSequenceNotes != null && this.currentSequenceNotes.Count != 0)
             {
                 Note nextNote = this.currentSequenceNotes.Dequeue();
                 LinkedList<Arrow.Direction> arrowDirections = nextNote.GetArrowDirections();
                 this.SpawnArrowDirections(arrowDirections);
                 this.delayToNextNoteSeconds = ArrowSpawner.GetNoteDurationInSeconds(nextNote.GetDuration());
+                Debug.Log(delayToNextNoteSeconds);
             }
         }
 
@@ -243,6 +266,15 @@ public class ArrowSpawner : MonoBehaviour
     }
 
     private void SpawnBeatMarker()
+    {
+        BeatMarker beatMarker = Instantiate(this.beatMarker, this.transform.position, Quaternion.identity);
+        SpriteRenderer beatMarkerSprite = beatMarker.GetComponent<SpriteRenderer>();
+        Color color = beatMarkerSprite.color;
+        color.a -= 0.5f;
+        beatMarkerSprite.color = color;
+    }
+
+    private void SpawnMeasureMarker()
     {
         Instantiate(beatMarker, this.transform.position, Quaternion.identity);
     }
