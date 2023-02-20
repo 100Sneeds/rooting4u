@@ -5,9 +5,10 @@ using UnityEditor;
 using UnityEngine.SceneManagement;
  
 public class Slideshow : MonoBehaviour
-{
-    
-    public Texture[] imageArray; 
+{	
+    public Texture[] imageArray;
+	public Texture arrowL;
+	public Texture arrowR;
     public int currentImage;
         
     float deltaTime = 0.0f;
@@ -21,8 +22,10 @@ public class Slideshow : MonoBehaviour
     {
         
         int w = Screen.width, h = Screen.height;
-        
+		
         Rect imageRect = new Rect(0, 0, Screen.width, Screen.height);
+		Rect arrowLRect = new Rect(15,415,96,96);
+		Rect arrowRRect = new Rect(Screen.width - 111, 415,96,96);
         
         //dont need to make button transparent but would be cool to know how to.
         //Rect buttonRect = new Rect(0, Screen.height - Screen.height / 10, Screen.width, Screen.height / 10);
@@ -30,6 +33,8 @@ public class Slideshow : MonoBehaviour
         //GUI.Label(imageRect, imageArray[currentImage]);
         //Draw texture seems more elegant
         GUI.DrawTexture(imageRect, imageArray[currentImage]);
+		GUI.DrawTexture(arrowLRect,arrowL);
+		GUI.DrawTexture(arrowRRect,arrowR);
     
         //if(GUI.Button(buttonRect, "Next"))
         //currentImage++;
@@ -60,6 +65,15 @@ public class Slideshow : MonoBehaviour
                 currentImage--;
                 SceneManager.LoadScene("MatchScene");
             }  
-        }            
+        }
+		if (Input.GetKeyDown(KeyCode.LeftArrow))
+		{
+			UnityEngine.Debug.Log("Pressed secondary button.");
+			currentImage--;
+			
+			if(currentImage < 0){
+				currentImage++;
+			}
+		}
     }
 }
