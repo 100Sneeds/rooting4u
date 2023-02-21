@@ -69,10 +69,11 @@ public static class NoteSequenceGenerator
     private static NoteSequence GetNoteSequenceCopy(NoteSequence sequenceToCopy)
     {
         SequenceDifficulty difficulty = sequenceToCopy.GetDifficulty();
+        string audioFileName = sequenceToCopy.GetAudioFileName();
         Note[] notes = sequenceToCopy.GetNotes();
 
         Note[] newNotes = NoteSequenceGenerator.GetNotesCopy(notes);
-        return new NoteSequence(difficulty, newNotes);
+        return new NoteSequence(difficulty, audioFileName, newNotes);
     }
 
     private static Note[] GetNotesCopy(Note[] notesToCopy)

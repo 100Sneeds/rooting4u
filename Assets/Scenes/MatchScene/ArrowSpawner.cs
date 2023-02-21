@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Threading.Tasks;
 
 public class ArrowSpawner : MonoBehaviour
 {
@@ -16,6 +17,7 @@ public class ArrowSpawner : MonoBehaviour
 
     public PerformancePhase performancePhase;
     public BeatMarker beatMarker;
+    public AudioClipPlayer audioClipPlayer;
 
     private static int BEATS_PER_MINUTE = 185; // quarter notes per minute
 
@@ -25,10 +27,10 @@ public class ArrowSpawner : MonoBehaviour
     private static float WHOLE_NOTES_PER_SECOND = ArrowSpawner.BEATS_PER_MINUTE * ArrowSpawner.WHOLE_NOTES_PER_BEAT / ArrowSpawner.SECONDS_PER_MINUTE;
     private static float SHORTEST_NOTE_DURATION = ArrowSpawner.GetNoteDurationInSeconds(NoteDuration.Sixteenth);
 
-    private static float BEATS_FROM_SPAWN_TO_HITZONE = 8;
+    private static int BEATS_FROM_SPAWN_TO_HITZONE = 8;
     private static float SECONDS_PER_BEAT = ArrowSpawner.GetNoteDurationInSeconds(NoteDuration.Quarter);
-    private static float SECONDS_TO_HITZONE = SECONDS_PER_BEAT * BEATS_FROM_SPAWN_TO_HITZONE;
-    private static float HITZONE_Y = 3.6f - 0.25f;
+    private static float SECONDS_TO_HITZONE = SECONDS_PER_BEAT * (float)BEATS_FROM_SPAWN_TO_HITZONE;
+    private static float HITZONE_Y = -0.25f;
     private static float SPAWNER_Y = -9.5f;
     private static float DISTANCE_TO_HITZONE = Mathf.Abs(SPAWNER_Y - HITZONE_Y);
     public static float RHYTHM_BOARD_SPEED = DISTANCE_TO_HITZONE / SECONDS_TO_HITZONE;
@@ -47,11 +49,15 @@ public class ArrowSpawner : MonoBehaviour
     private float delayToNextBeatSeconds = ArrowSpawner.GetNoteDurationInSeconds(NoteDuration.Quarter);
 
     private float measureTimerSeconds = 0f;
-    private float delayToNextMeasureSeconds = ArrowSpawner.GetNoteDurationInSeconds(NoteDuration.Quarter) * BEATS_FROM_SPAWN_TO_HITZONE / 4;
+    private float delayToNextMeasureSeconds = ArrowSpawner.GetNoteDurationInSeconds(NoteDuration.Whole);
+
+    private float audioClipTimerSeconds = 0f;
+    private float delayToNextAudioClipSeconds = 0f;
+    private string nextAudioFileName;
 
     private int measureCounter = 0;
-    private int measuresPerBackingTrackLoop = 4;
-    private int backingTrackLoopPhaseShift = 3;
+    private int measuresPerSequence = 8;
+    private int backingTrackLoopPhaseShift = BEATS_FROM_SPAWN_TO_HITZONE / 4;
 
     private NoteSequence currentSequence;
     private Queue<Note> currentSequenceNotes;
@@ -75,6 +81,7 @@ public class ArrowSpawner : MonoBehaviour
         this.noteTimerSeconds += Time.deltaTime;
         this.beatTimerSeconds += Time.deltaTime; // Every quarter note
         this.measureTimerSeconds += Time.deltaTime; // Every measure
+        this.audioClipTimerSeconds += Time.deltaTime;
 
         if (this.beatTimerSeconds >= this.delayToNextBeatSeconds)
         {
@@ -90,16 +97,20 @@ public class ArrowSpawner : MonoBehaviour
             this.measureCounter++;
         }
 
-        if (this.measureCounter % this.measuresPerBackingTrackLoop == this.backingTrackLoopPhaseShift)
+        if (this.measureCounter % this.measuresPerSequence == this.backingTrackLoopPhaseShift)
         {
-            this.measureCounter -= this.measuresPerBackingTrackLoop;
+            this.measureCounter -= this.measuresPerSequence;
             if (this.currentSequenceNotes == null || this.currentSequenceNotes.Count == 0)
             {
                 if (sequenceSpawnQueue.Count > 0)
                 {
                     this.SetCurrentNoteSequence(sequenceSpawnQueue.Dequeue());
+
                     this.noteTimerSeconds = 0f;
                     this.delayToNextNoteSeconds = 0f;
+
+                    this.audioClipTimerSeconds = 0f;
+                    this.delayToNextAudioClipSeconds = 2.5f; //SECONDS_TO_HITZONE;
                 }
             }
         }
@@ -113,8 +124,15 @@ public class ArrowSpawner : MonoBehaviour
                 LinkedList<Arrow.Direction> arrowDirections = nextNote.GetArrowDirections();
                 this.SpawnArrowDirections(arrowDirections);
                 this.delayToNextNoteSeconds = ArrowSpawner.GetNoteDurationInSeconds(nextNote.GetDuration());
-                Debug.Log(delayToNextNoteSeconds);
             }
+        }
+
+        if (this.audioClipTimerSeconds >= this.delayToNextAudioClipSeconds && this.nextAudioFileName != null)
+        {
+            this.audioClipTimerSeconds = 0f;
+            this.delayToNextAudioClipSeconds = 0f;
+            this.audioClipPlayer.PlayAudioClipByName(this.nextAudioFileName);
+            this.nextAudioFileName = null;
         }
 
         if (this.incompleteSequences.Count != 0)
@@ -150,10 +168,7 @@ public class ArrowSpawner : MonoBehaviour
 
     private void UpdateAndResolveIncompleteSequences(Queue<NoteSequence> incompleteSequences)
     {
-        if (incompleteSequences.Count == 0)
-        {
-            return;
-        } else
+        if (incompleteSequences.Count != 0)
         {
             NoteSequence nextSequence = incompleteSequences.Peek();
             NoteSequence.SpawnState spawnState = nextSequence.GetSpawnState();
@@ -171,6 +186,7 @@ public class ArrowSpawner : MonoBehaviour
         this.currentSequence = sequence;
         this.currentSequenceNotes = new Queue<Note>(sequence.GetNotes());
         this.incompleteSequences.Enqueue(sequence);
+        this.nextAudioFileName = sequence.GetAudioFileName();
     }
 
     private void SpawnArrowDirections(LinkedList<Arrow.Direction> arrowDirections)
