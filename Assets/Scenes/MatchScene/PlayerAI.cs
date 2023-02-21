@@ -6,7 +6,6 @@ public class PlayerAI
 {
 
     public int difficulty; // 0 to 10
-    private static int MAX_DIFF = 1;
 
     private static int PERFECT_RNG = 600;
     private static int GOOD_HIT_RNG = 700;

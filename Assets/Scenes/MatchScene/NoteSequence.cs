@@ -22,12 +22,14 @@ public class NoteSequence
     private static float SEQUENCE_FAIL_PERCENT_UPPER_LIMIT = 0.7f;
 
     SequenceDifficulty difficulty;
+    string audioFileName;
     Note[] notes;
     public List<GameObject> arrowObjects = new List<GameObject>();
 
-    public NoteSequence(SequenceDifficulty difficulty, Note[] notes)
+    public NoteSequence(SequenceDifficulty difficulty, string audioFileName, Note[] notes)
     {
         this.difficulty = difficulty;
+        this.audioFileName = audioFileName;
         this.notes = notes;
     }
 
@@ -39,6 +41,11 @@ public class NoteSequence
     public Note[] GetNotes()
     {
         return this.notes;
+    }
+
+    public string GetAudioFileName()
+    {
+        return this.audioFileName;
     }
 
     public void AddArrowObject(GameObject arrowObject)
