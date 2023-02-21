@@ -162,7 +162,7 @@ public class HandCursor : MonoBehaviour
             return;
         }
         Vector3 cardPosition = renderedPositions[cursorIndex];
-        this.transform.position = cardPosition + new Vector3(0, -0.62f, 0);
+        this.transform.position = cardPosition + new Vector3(0.2f, -0.77f, 0);
     }
 
     private bool GetIsActive()

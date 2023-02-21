@@ -85,15 +85,21 @@ public class ProgressIndicator : MonoBehaviour
             case ProgressState.Idle:
                 this.footballPlayerLeft.GetAnimator().Play("Idle");
                 this.footballPlayerRight.GetAnimator().Play("Idle");
+				this.footballPlayerLeft.transform.position = this.transform.position + new Vector3(-0.8f,0,0);
+				this.footballPlayerRight.transform.position = this.transform.position + new Vector3(0.8f,0,0);
                 break;
             case ProgressState.PushRight:
                 this.footballPlayerLeft.GetAnimator().Play("Pushing");
                 this.footballPlayerRight.GetAnimator().Play("Pushed");
+				this.footballPlayerLeft.transform.position = this.transform.position + new Vector3(-0.68f,0,0);
+				this.footballPlayerRight.transform.position = this.transform.position + new Vector3(0.44f,0,0);
                 break;
             case ProgressState.PushLeft:
                 this.footballPlayerLeft.GetAnimator().Play("Pushed");
                 this.footballPlayerRight.GetAnimator().Play("Pushing");
-                break;
+				this.footballPlayerLeft.transform.position = this.transform.position + new Vector3(-0.44f,0,0);
+				this.footballPlayerRight.transform.position = this.transform.position + new Vector3(0.68f,0,0);
+				break;
         }
     }
 }
