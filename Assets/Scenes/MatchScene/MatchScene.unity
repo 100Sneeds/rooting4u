@@ -2139,7 +2139,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &705503579
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2164,7 +2164,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: e0e34a5dadf59c1459b3b26334b296da, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.3
+  m_Volume: 0.1
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -2821,7 +2821,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 0.005
+  m_Volume: 0.05
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -3165,6 +3165,8 @@ MonoBehaviour:
   performancePhase: {fileID: 554093903}
   beatMarker: {fileID: 8769554276668302906, guid: d3ba1c82366450248b006b40cb8dabf2, type: 3}
   audioClipPlayer: {fileID: 906785965}
+  isPlayingBackingTrack: 0
+  backingTrackPlayer: {fileID: 0}
 --- !u!1 &987343117
 GameObject:
   m_ObjectHideFlags: 0
@@ -5491,6 +5493,8 @@ MonoBehaviour:
   performancePhase: {fileID: 152685753}
   beatMarker: {fileID: 8769554276668302906, guid: d3ba1c82366450248b006b40cb8dabf2, type: 3}
   audioClipPlayer: {fileID: 906785965}
+  isPlayingBackingTrack: 1
+  backingTrackPlayer: {fileID: 705503579}
 --- !u!1 &1955167875
 GameObject:
   m_ObjectHideFlags: 0

@@ -18,6 +18,7 @@ public class ArrowSpawner : MonoBehaviour
     public PerformancePhase performancePhase;
     public BeatMarker beatMarker;
     public AudioClipPlayer audioClipPlayer;
+    public bool isPlayingBackingTrack;
 
     private static int BEATS_PER_MINUTE = 185; // quarter notes per minute
 
@@ -55,9 +56,13 @@ public class ArrowSpawner : MonoBehaviour
     private float delayToNextAudioClipSeconds = 0f;
     private string nextAudioFileName;
 
+    private float backingTrackTimerSeconds = 0f;
+    private float delayToNextBackingTrackSeconds = 0f;
+    private bool isBackingTrackQueued = false;
+
     private int measureCounter = 0;
+    private int previousMeasureCount = -1;
     private int measuresPerSequence = 8;
-    private int backingTrackLoopPhaseShift = BEATS_FROM_SPAWN_TO_HITZONE / 4;
 
     private NoteSequence currentSequence;
     private Queue<Note> currentSequenceNotes;
@@ -82,6 +87,7 @@ public class ArrowSpawner : MonoBehaviour
         this.beatTimerSeconds += Time.deltaTime; // Every quarter note
         this.measureTimerSeconds += Time.deltaTime; // Every measure
         this.audioClipTimerSeconds += Time.deltaTime;
+        this.backingTrackTimerSeconds += Time.deltaTime;
 
         if (this.beatTimerSeconds >= this.delayToNextBeatSeconds)
         {
@@ -97,9 +103,17 @@ public class ArrowSpawner : MonoBehaviour
             this.measureCounter++;
         }
 
-        if (this.measureCounter % this.measuresPerSequence == this.backingTrackLoopPhaseShift)
+        if (this.previousMeasureCount != this.measureCounter && this.measureCounter % this.measuresPerSequence == 0)
         {
-            this.measureCounter -= this.measuresPerSequence;
+            this.previousMeasureCount = this.measureCounter;
+
+            if (this.isPlayingBackingTrack)
+            {
+                this.backingTrackTimerSeconds = 0f;
+                this.delayToNextBackingTrackSeconds = 2.5f;
+                this.isBackingTrackQueued = true;
+            }
+
             if (this.currentSequenceNotes == null || this.currentSequenceNotes.Count == 0)
             {
                 if (sequenceSpawnQueue.Count > 0)
@@ -131,8 +145,16 @@ public class ArrowSpawner : MonoBehaviour
         {
             this.audioClipTimerSeconds = 0f;
             this.delayToNextAudioClipSeconds = 0f;
-            this.audioClipPlayer.PlayAudioClipByName(this.nextAudioFileName);
+            this.audioClipPlayer.PlayAudioClipByName(this.nextAudioFileName, 0.05f);
             this.nextAudioFileName = null;
+        }
+
+        if (this.backingTrackTimerSeconds >= this.delayToNextBackingTrackSeconds && this.isBackingTrackQueued)
+        {
+            this.backingTrackTimerSeconds = 0f;
+            this.delayToNextBackingTrackSeconds = 0f;
+            this.audioClipPlayer.PlayAudioClipByName("Backbeat", 0.3f);
+            this.isBackingTrackQueued = false;
         }
 
         if (this.incompleteSequences.Count != 0)
